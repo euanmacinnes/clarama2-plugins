@@ -1,0 +1,11 @@
+field:
+  name: Sub Status
+  description:
+    Current issue sub status
+  type: select
+  required: true
+  data:
+      options:
+        - Duplicate
+        - Invalid
+        - Won't Fix

@@ -1,0 +1,6 @@
+field:
+  name: Code Editor
+  description:
+    This is a test field that showcases the basic available options
+  type: codeeditor
+  required: true

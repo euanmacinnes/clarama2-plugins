@@ -1,0 +1,20 @@
+slate:
+    grid:
+        children:
+        -   h: 15
+            id: element_1
+            w: 3
+            x: 0
+            y: 0
+        -   h: 15
+            id: element_0
+            w: 9
+            x: 3
+            y: 0
+        elements:
+            element_0:
+                url: ./xls_explore.task.yaml?run=True
+            element_1:
+                links:
+                - element_0
+                url: ./xls_explore_tables.task.yaml?run=True

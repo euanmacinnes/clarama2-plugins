@@ -1,0 +1,11 @@
+slate:
+    grid:
+        children:
+        -   h: null
+            id: element_0
+            w: 4
+            x: 0
+            y: 0
+        elements:
+            element_0:
+                url: ././table_rows.field.yaml

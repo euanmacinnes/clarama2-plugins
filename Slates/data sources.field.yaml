@@ -1,0 +1,9 @@
+field:
+  name: Available Data Sources
+  description:
+    This is a test field that showcases the basic available options
+  type: select
+  required: true
+  data:
+    options:
+      - Data/Sources/clarama instance postgres.source.yaml

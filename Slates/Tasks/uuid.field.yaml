@@ -1,0 +1,18 @@
+field:
+    data:
+        action: null
+        options: null
+        params:
+            path: null
+            query: null
+        source: null
+    default: "{{ row['uuid'] or "" }}"
+    description: Unique Job ID
+    maximum: ''
+    minimum: ''
+    name: uuid
+    placeholder: ''
+    spacing: '3'
+    step: ''
+    type: string
+    readonly: True

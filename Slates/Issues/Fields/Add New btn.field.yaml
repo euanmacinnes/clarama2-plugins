@@ -1,0 +1,17 @@
+field:
+    data:
+        action: null
+        options: null
+        params:
+            path: null
+            query: null
+        source: null
+    default: Add New Issue
+    description: ''
+    maximum: ''
+    minimum: ''
+    name: ''
+    placeholder: ''
+    spacing: '3'
+    step: ''
+    type: button

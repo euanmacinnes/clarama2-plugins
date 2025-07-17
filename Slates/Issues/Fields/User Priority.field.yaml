@@ -1,0 +1,10 @@
+field:
+  name: Priority of Issue
+  type: select
+  required: true
+  data:
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical

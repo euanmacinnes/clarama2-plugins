@@ -1,0 +1,8 @@
+field: 
+    name: Months
+    hint: Either the number of Months between runs, or the specific Month (of the Year) to execute on
+    type: range
+    minimum: 1
+    maximum: 12
+    step: 1
+    default: 1

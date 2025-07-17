@@ -1,0 +1,90 @@
+task:
+    environment: default
+    fieldgrid:
+        children:
+        -   h: 4
+            id: element_0
+            w: 4
+            x: 0
+            y: 0
+        elements:
+            element_0:
+                url: ./query.field.yaml
+        values:
+            query: ''
+    streams:
+    -   main:
+        -   content: "ob_name = parameters.get('row', {}).get(\"Object\",None)\nob_type\
+                \ = parameters.get('row', {}).get(\"Type\",None)\n\nif ob_name is\
+                \ not None:\n    alert(\"Object\")\n    if ob_type in ['Table','View']:\n\
+                \        query = f\"\"\"select * from \"{ob_name}\" \"\"\"\n     \
+                \   print(\"ob_type!\")\n        \n    if ob_type in ['Bucket']:\n\
+                \        query = f\"\"\"from(bucket: \"{ob_name}\")\n  |> range(start:\
+                \ -30d)\n  |> aggregateWindow(every: 2h, fn: mean, createEmpty: false)\n\
+                \  |> yield(name: \"mean\")\"\"\"\nelse:\n    alert(f\"Query\")\n\
+                \    query = parameters.get('query', None)\n    if query == '':\n\
+                \        query=None\n    \n    print(parameters)\n    \nexecute_query\
+                \ = query is not None"
+            loop-iterable: ''
+            type: code
+        -   chart:
+                legend: 'Off'
+                series-annos:
+                -   anno-col: ''
+                    anno-col-back: ''
+                    anno-dt: false
+                    anno-label: ''
+                    anno-s: ''
+                    anno-tab: '0'
+                    anno-type: box
+                    anno-u: ''
+                    anno-width: ''
+                    anno-x: ''
+                    anno-xm: ''
+                    anno-y: ''
+                    anno-ym: ''
+                series-formats:
+                -   format-col: ''
+                    format-col-back: ''
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                    format-ps: circle
+                    format-title: ''
+                    format-ua: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-tab: '0'
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+                xaxis-type: category
+            loop-iterable: execute_query
+            output: table
+            table:
+                checkbox: false
+                export: false
+                filter: false
+                footer: false
+                multiselect-row: false
+                pagesize: '15'
+                pagination: true
+                search: false
+                sortable: true
+                style: default
+                title: ''
+            tabs:
+            -   content: '{ query }'
+                source: /{parameters['original_url']}
+                tab_id: 0
+            type: data

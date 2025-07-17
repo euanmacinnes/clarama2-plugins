@@ -1,0 +1,12 @@
+field:
+  name: Issue Type
+  type: select
+  required: true
+  data:
+      options:
+        - Bug
+        - Documentation
+        - Enhancement
+        - Help Wanted
+        - Question
+        - Issue

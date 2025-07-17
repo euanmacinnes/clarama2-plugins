@@ -1,0 +1,5 @@
+field:
+    name: Execute
+    description: Run query against { original_url }
+    default: Go
+    type: button

@@ -1,0 +1,23 @@
+task:
+    fieldgrid:
+        children:
+        -   h: 2
+            id: element_0
+            w: 4
+            x: 0
+            y: 0
+        elements:
+            element_0:
+                url: ././table_ensure.field.yaml
+        values:
+            table_ensure: Ensure
+    streams:
+    -   main:
+        -   content: "run=False\nimport pprint \n\nif parameters['table_ensure']==\"\
+                Ensure\":\n    if 'original_url' in parameters:\n        print(f\"\
+                Ensuring table {parameters['original_url']}...\")\n        run = True\n\
+                \        \n        result = execute(f'ensure/{parameters['original_url']}')\n\
+                \        if result['data']=='ok':\n            print(result['results']['action'])\n\
+                \    else:\n        print(f\"Please run embedded\")\n\n"
+            loop-iterable: ''
+            type: code

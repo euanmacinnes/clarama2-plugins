@@ -1,0 +1,4 @@
+field:
+    name: Add New Comment
+    default: "Add"
+    type: button

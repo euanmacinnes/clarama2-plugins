@@ -1,0 +1,22 @@
+slate:
+    grid:
+        children:
+        -   h: 17
+            id: element_0
+            w: 6
+            x: 0
+            y: 0
+        -   h: 17
+            id: element_1
+            w: 6
+            x: 6
+            y: 0
+        elements:
+            element_0:
+                links:
+                -   element: element_1
+                    params: ''
+                    url: ./Issues/Tasks/Comments.task.yaml
+                url: ./Issues/Tasks/Issues.task.yaml
+            element_1:
+                url: ./Issues/Tasks/Comments.task.yaml

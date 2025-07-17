@@ -1,0 +1,6 @@
+field: 
+    name: Number of Rows
+    type: number
+    default: 1000
+    minimum: 1000
+    maximum: 10000

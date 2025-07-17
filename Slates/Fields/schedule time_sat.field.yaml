@@ -1,0 +1,5 @@
+field:
+  name: Enable Saturday
+  description: Saturday
+  type: checkbox
+  required: false
