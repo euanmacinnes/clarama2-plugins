@@ -165,12 +165,12 @@ task:
                 \ncron = None\ntask_params = {}\nfor k, v in parameters.items():\n\
                 \    if k[:9]!='schedule_' and k not in ['original_url','clarama_task_kill']\
                 \ and k[:8]!='clarama_' and k[:8]!='element_' and k != 'layout' and\
-                \ k !='autorefresh':\n        task_params[k]=v\n\nif parameters['schedule_time_seconds']!='off'\
-                \ or parameters['schedule_time_minutes']!='off' or parameters['schedule_time_hours']!='off'\
-                \ or parameters['schedule_time_weeks']!='off' or parameters['schedule_time_days']!='off'\
-                \ or parameters['schedule_time_months']!='off':\n    validity = ''\n\
-                \    cron_sec, sec_val, validity = process_cron('seconds', parameters,\
-                \ validity)\n    cron_min, min_val, validity = process_cron('minutes',\
+                \ k not in ['autorefresh', 'debug_theme']:\n        task_params[k]=v\n\
+                \nif parameters['schedule_time_seconds']!='off' or parameters['schedule_time_minutes']!='off'\
+                \ or parameters['schedule_time_hours']!='off' or parameters['schedule_time_weeks']!='off'\
+                \ or parameters['schedule_time_days']!='off' or parameters['schedule_time_months']!='off':\n\
+                \    validity = ''\n    cron_sec, sec_val, validity = process_cron('seconds',\
+                \ parameters, validity)\n    cron_min, min_val, validity = process_cron('minutes',\
                 \ parameters, validity)\n    cron_hrs, hrs_val, validity = process_cron('hours',\
                 \ parameters, validity)\n    cron_dys, dys_val, validity = process_cron('days',\
                 \ parameters, validity)\n    cron_mts, mts_val, validity = process_cron('months',\
@@ -182,11 +182,13 @@ task:
                 \ = True\n        dys_val = True\n        mts_val = True\n       \
                 \ \n    if (sec_val & min_val & hrs_val & dys_val & mts_val):\n  \
                 \      cron = f\"{ cron_min } { cron_hrs } { cron_dys } { cron_wks\
-                \ } { cron_mts }\"\n        print(f\"scheduling task with { cron }\"\
-                )\n        print(f\"parameters: { task_params }\")\n    else:\n  \
-                \      print(\"Invalid time setting:\" + validity)\nelse:\n    print(\"\
-                Nothing to schedule\")\n    \nif 'original_url' in parameters and\
-                \ cron is not None:\n    date_from = parameters['schedule_start_date']\n\
+                \ } { cron_mts }\"\n        \n        if cron == \"0 0 * * *\":\n\
+                \            print(\"Please select a time to schedule\")\n       \
+                \     cron = None\n        else:\n            print(f\"scheduling\
+                \ task with { cron }\")\n            print(f\"parameters: { task_params\
+                \ }\")\n    else:\n        print(\"Invalid time setting:\" + validity)\n\
+                else:\n    print(\"Nothing to schedule\")\n    \nif 'original_url'\
+                \ in parameters and cron is not None:\n    date_from = parameters['schedule_start_date']\n\
                 \    date_to = parameters['schedule_end_date']\n    print(\"Date From:\"\
                 , date_from, \"Date To:\" , date_to, \" for \", user['username'])\n\
                 \    job_id=job(\"task\",parameters['original_url'], cron, None, date_to,\

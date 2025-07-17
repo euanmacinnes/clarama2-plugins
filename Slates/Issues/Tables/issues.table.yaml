@@ -45,15 +45,30 @@ table:
         length: 30
       indexed: True
       doc: Issue sub-status (lowercase) - duplicate, invalid, wontfix
-    - name: reviewer_priority
+    - name: assigned_to
+      type: String
+      type-info:
+        length: 255
+      indexed: True
+      doc: The users assigned to the issue      
+    - name: assigned_priority
       type: String
       type-info:
         length: 30
       indexed: True
-      doc: Reviewer's priority on the issue
+      doc: Assigned priority on the issue
+    - name: assigned_by
+      type: String
+      type-info:
+        length: 30
+      indexed: True
+      doc: Assigned priority on the issue
     - name: date_created
       type: DateTime
       doc: Date & time this job issue created
     - name: date_updated
       type: DateTime
       doc: Date & time this issue was last updated
+    - name: date_due
+      type: DateTime
+      doc: Date & time this issue was last updated      

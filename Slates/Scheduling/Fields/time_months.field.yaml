@@ -1,0 +1,12 @@
+field:
+  name: Enable Months
+  type: select
+  options:
+    - id: off
+      value: Off
+    - id: x
+      value: Every .. Month
+    - id: nth
+      value: On The .. th Month of the Year
+  default: off
+  required: false

@@ -10,17 +10,14 @@ slate:
             id: element_0
             w: 11
             x: 0
-            y: 2
+            y: 3
         elements:
             element_0:
-                url: 
+                url: ''
             element_1:
                 links:
                 -   element: element_0
                     params: ''
                     uid: '0'
-                    url: ''
+                    url: ./table_ensure.task.yaml
                 url: ./table_ensure.field.yaml
-
-
-

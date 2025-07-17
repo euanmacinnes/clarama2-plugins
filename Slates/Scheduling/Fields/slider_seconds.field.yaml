@@ -1,0 +1,8 @@
+field: 
+    name: Seconds
+    hint: Either the number of seconds between runs, or the specific second (per minute) to execute on
+    type: range
+    minimum: 0
+    maximum: 59
+    step: 1
+    default: 0

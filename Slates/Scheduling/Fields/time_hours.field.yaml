@@ -1,0 +1,12 @@
+field:
+  name: Enable Hours
+  type: select
+  options:
+    - id: off
+      value: Off
+    - id: x
+      value: Every .. Hours
+    - id: nth
+      value: On The .. th Hour of the Day (24 Hours)
+  default: off
+  required: false

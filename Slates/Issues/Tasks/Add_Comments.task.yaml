@@ -9,6 +9,7 @@ task:
             y: 0
         elements:
             element_0:
+                spacing: '1'
                 url: ./../Fields/Comment.field.yaml
         values:
             comment: ''
@@ -19,12 +20,13 @@ task:
                 now = datetime.now().isoformat()\nreviewer = user['username']\n\n\
                 if 'comment' in parameters:\n    comment = parameters['comment'].strip().replace(\"\
                 '\", \"''\")  # escape single quotes\n\nif 'issue_id' in parameters:\n\
-                \    issue_id = parameters['issue_id']\n    print(\"parameters: \"\
-                \ + issue_id)\nelse:\n    issue_id = \"f2247711-513a-4423-8fe3-6dff407a6616\"\
-                \n    print(\"no issue_id parameter\")"
+                \    issue_id = parameters['issue_id']\n    add=True\n    print(\"\
+                parameters: \" + issue_id)\nelse:\n    issue_id = \"f2247711-513a-4423-8fe3-6dff407a6616\"\
+                \n    add = False\n    print(\"no issue_id parameter\")"
             loop-iterable: ''
             type: code
         -   chart:
+                advanced: ''
                 legend: 'Off'
                 series-annos:
                 -   anno-col: ''
@@ -32,7 +34,7 @@ task:
                     anno-dt: false
                     anno-label: ''
                     anno-s: ''
-                    anno-tab: '0'
+                    anno-tab: 0
                     anno-type: box
                     anno-u: ''
                     anno-width: ''
@@ -55,7 +57,7 @@ task:
                 series-groups:
                 -   series-l: ''
                     series-s: ''
-                    series-tab: '0'
+                    series-tab: 0
                     series-type: Line
                     series-u: ''
                     series-x: ''
@@ -66,7 +68,7 @@ task:
                 subtitle: ''
                 title: ''
                 xaxis-type: category
-            loop-iterable: ''
+            loop-iterable: add
             output: table
             table:
                 checkbox: false

@@ -2,20 +2,26 @@ task:
     environment: default
     fieldgrid:
         children:
+        -   id: element_0
+            w: 4
+            x: 0
+            y: 0
         -   id: element_9
             w: 12
             x: 0
-            y: 0
+            y: 1
         -   id: element_8
             w: 12
             x: 0
-            y: 1
+            y: 2
         -   h: 10
             id: element_7
             w: 12
             x: 0
-            y: 2
+            y: 3
         elements:
+            element_0:
+                text: 'Path: '
             element_7:
                 url: ./../Fields/Description.field.yaml
             element_8:
@@ -24,6 +30,7 @@ task:
                 url: ./../Fields/Type.field.yaml
         values:
             description: hi
+            local_slates_issues_tasks_add_issues_task_yaml_element_0: 'Path: '
             type: null
             user_priority: null
     streams:
@@ -39,6 +46,7 @@ task:
             loop-iterable: ''
             type: code
         -   chart:
+                advanced: ''
                 legend: 'Off'
                 series-annos:
                 -   anno-col: ''
@@ -46,7 +54,7 @@ task:
                     anno-dt: false
                     anno-label: ''
                     anno-s: ''
-                    anno-tab: '0'
+                    anno-tab: 0
                     anno-type: box
                     anno-u: ''
                     anno-width: ''
@@ -69,7 +77,7 @@ task:
                 series-groups:
                 -   series-l: ''
                     series-s: ''
-                    series-tab: '0'
+                    series-tab: 0
                     series-type: Line
                     series-u: ''
                     series-x: ''
@@ -96,12 +104,11 @@ task:
                 title: ''
             tabs:
             -   content: 'INSERT INTO issues (issue_id, "type", user_priority, description,
-                    path, "user", status, sub_status, reviewer_priority, date_created,
-                    date_updated)
+                    path, "user", status, date_created, date_updated)
 
                     VALUES (''{issue_id}'', ''{parameters["type"]}'', ''{parameters["user_priority"]}'',
-                    ''{desc}'', ''{url}'', ''{username}'', ''Open'', '''', '''', ''{
-                    now }'', ''{ now }'');
+                    ''{desc}'', ''{url}'', ''{username}'', ''Created'', ''{ now }'',
+                    ''{ now }'');
 
                     COMMIT;'
                 source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'

@@ -33,15 +33,16 @@ slate:
                 - element_7
                 -   element: element_3
                     params: ''
+                    uid: NaN
                     url: ''
                 -   contextMenu: true
                     element: modal
-                    menu_item_name: Edit CRON
+                    menu_item_name: Edit Cron
                     params: ''
-                    url: ./Tasks/Job_Update.task.yaml
+                    url: ./Jobs/Tasks/Job_Update.task.yaml
                 params: ''
                 refresh: true
-                url: ./Tasks/Jobs.task.yaml
+                url: ./Jobs/Tasks/Jobs.task.yaml
             element_1:
                 text: <h3>{basename(original_url)} jobs for { user }</h3>
             element_2:
@@ -51,8 +52,9 @@ slate:
                 - element_0
                 params: ''
                 refresh: false
-                url: ./Fields/job_all_users.field.yaml
+                url: ./Jobs/Fields/job_all_users.field.yaml
             element_3:
-                url: ./Tasks/Job_Details.task.yaml
+                url: ./Jobs/Tasks/Job_Details.task.yaml
             element_7:
-                url: ./Tasks/Jobs Chart.task.yaml
+                url: ./Jobs/Tasks/Jobs Chart.task.yaml
+

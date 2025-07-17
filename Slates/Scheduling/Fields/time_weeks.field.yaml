@@ -1,0 +1,9 @@
+field:
+  name: Enable Weeks
+  type: select
+  options:
+    - Off
+    - Every .. Week
+    - On The .. th Week of the Year
+  default: Off
+  required: false

@@ -20,14 +20,16 @@ task:
             loop-iterable: ''
             type: code
         -   chart:
+                advanced: ''
                 legend: 'Off'
                 series-annos:
                 -   anno-col: ''
                     anno-col-back: ''
                     anno-dt: false
+                    anno-i: ''
                     anno-label: ''
                     anno-s: ''
-                    anno-tab: '0'
+                    anno-tab: 0
                     anno-type: box
                     anno-u: ''
                     anno-width: ''
@@ -50,7 +52,7 @@ task:
                 series-groups:
                 -   series-l: ''
                     series-s: ''
-                    series-tab: '0'
+                    series-tab: 0
                     series-type: Line
                     series-u: ''
                     series-x: ''
@@ -64,20 +66,21 @@ task:
             loop-iterable: ''
             output: table
             table:
-                checkbox: false
+                checkbox: true
                 export: false
                 filter: false
                 footer: false
                 multiselect-row: false
                 pagesize: '15'
                 pagination: true
-                search: false
+                search: true
+                slate: ''
                 sortable: true
                 style: default
                 title: ''
             tabs:
             -   content: 'select issue_id, "type", description, user_priority, path,
-                    "user", status, sub_status, reviewer_priority, date_created, date_updated
+                    "user", status, sub_status, assigned_priority, assigned_to, date_due
 
                     from issues
 

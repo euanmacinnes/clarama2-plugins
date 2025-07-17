@@ -4,26 +4,35 @@ task:
         children:
         -   h: 2
             id: element_0
-            w: 8
+            w: 10
             x: 0
             y: 0
         -   h: 2
             id: element_1
-            w: 8
+            w: 10
             x: 0
             y: 2
+        -   id: element_2
+            w: 10
+            x: 0
+            y: 4
         elements:
             element_0:
-                url: ./uuid.field.yaml
+                url: ./../Fields/uuid.field.yaml
             element_1:
-                url: ./cron.field.yaml
+                url: ./../Fields/cron.field.yaml
             element_2:
-                text: new text
+                text: Edit the CRON settings, then press Play to save the results
         values:
             cron: ''
+            local_slates_tasks_job_update_task_yaml_element_2: Edit the CRON settings,
+                then press Play to save the results
             uuid: ''
     streams:
     -   main:
+        -   content: "update=False\n\nif 'row' in parameters:\n    update=True"
+            loop-iterable: ''
+            type: code
         -   chart:
                 advanced: ''
                 legend: 'Off'
@@ -67,7 +76,7 @@ task:
                 subtitle: ''
                 title: ''
                 xaxis-type: category
-            loop-iterable: ''
+            loop-iterable: update
             output: table
             table:
                 checkbox: false
@@ -82,11 +91,14 @@ task:
                 style: default
                 title: ''
             tabs:
-            -   content: "update jobs \nset cron='{parameters['cron']}' \nwhere uuid='{parameters['uuid']}';\n\
-                    commit;\n"
+            -   content: "update jobs \n\nset cron='{parameters['row']['cron']}' \n\
+                    where uuid='{parameters['row']['uuid']}';\ncommit;\n"
                 source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
+        -   content: alert("Job updated")
+            loop-iterable: update
+            type: code
         -   chart:
                 advanced: ''
                 legend: 'Off'
@@ -151,6 +163,4 @@ task:
                 source: ''
                 tab_id: 0
             type: data
-        -   content: alert("Job updated")
-            loop-iterable: ''
-            type: code
+
