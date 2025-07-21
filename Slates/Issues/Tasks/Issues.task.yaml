@@ -74,7 +74,7 @@ task:
                 pagesize: '15'
                 pagination: true
                 search: true
-                slate: ''
+                slate: ./../Issue View.slate.yaml
                 sortable: true
                 style: default
                 title: ''
