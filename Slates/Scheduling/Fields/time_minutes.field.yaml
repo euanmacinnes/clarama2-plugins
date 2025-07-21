@@ -1,0 +1,12 @@
+field:
+  name: Enable Minutes
+  type: select
+  options:
+    - id: off
+      value: Off
+    - id: x
+      value: Every .. Minute
+    - id: nth
+      value: On The .. th Minute of the Hour
+  default: off
+  required: false

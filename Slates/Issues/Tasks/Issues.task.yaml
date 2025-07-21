@@ -1,0 +1,90 @@
+task:
+    environment: default
+    fieldgrid:
+        children: []
+        elements:
+            element_0:
+                url: ./Add_Comments.task.yaml
+            element_1:
+                url: ./../Fields/issues/Comment.field.yaml
+        values: {}
+    streams:
+    -   main:
+        -   content: "filters = []\n\nif 'original_url' in parameters:\n    url =\
+                \ parameters['original_url']\n    lowercase_url = url.lower()\n  \
+                \  print(\"parameters: \" + lowercase_url)\n    filters.append(f\"\
+                \"\"LOWER(path) LIKE '{lowercase_url}%'\"\"\")\nelse:\n    print(\"\
+                no url parameter\")\n    \n# filters.append(f\"\\\"user\\\" = '{user['username']}'\"\
+                )\n\nfilter=\"\"\n\nif len(filters)>0:\n    filter = 'WHERE ' + '\
+                \ AND '.join(filters)\n\nprint(\"Filter:\", filter)"
+            loop-iterable: ''
+            type: code
+        -   chart:
+                advanced: ''
+                legend: 'Off'
+                series-annos:
+                -   anno-col: ''
+                    anno-col-back: ''
+                    anno-dt: false
+                    anno-i: ''
+                    anno-label: ''
+                    anno-s: ''
+                    anno-tab: 0
+                    anno-type: box
+                    anno-u: ''
+                    anno-width: ''
+                    anno-x: ''
+                    anno-xm: ''
+                    anno-y: ''
+                    anno-ym: ''
+                series-formats:
+                -   format-col: ''
+                    format-col-back: ''
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                    format-ps: circle
+                    format-title: ''
+                    format-ua: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-tab: 0
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+                xaxis-type: category
+            loop-iterable: ''
+            output: table
+            table:
+                checkbox: true
+                export: false
+                filter: false
+                footer: false
+                multiselect-row: false
+                pagesize: '15'
+                pagination: true
+                search: true
+                slate: ''
+                sortable: true
+                style: default
+                title: ''
+            tabs:
+            -   content: 'select issue_id, "type", description, user_priority, path,
+                    "user", status, sub_status, assigned_priority, assigned_to, date_due
+
+                    from issues
+
+                    {filter}'
+                source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
+                tab_id: 0
+            type: data

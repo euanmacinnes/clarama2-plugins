@@ -1,0 +1,11 @@
+slate:
+    grid:
+        children:
+        -   h: 23
+            id: element_0
+            w: 12
+            x: 0
+            y: 0
+        elements:
+            element_0:
+                url: ./csv_explore.task.yaml?run=True

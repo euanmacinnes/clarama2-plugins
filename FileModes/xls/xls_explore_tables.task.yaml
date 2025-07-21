@@ -1,0 +1,35 @@
+task:
+    fieldgrid:
+        children: []
+        elements: {}
+        values: {}
+    streams:
+    -   main:
+        -   chart:
+                legend: 'Off'
+                series-formats:
+                -   format-col: rgb(255, 99, 132)
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+            content: show objects
+            loop-iterable: ''
+            output: table
+            source: /{parameters['original_url']}
+            table: {}
+            type: data

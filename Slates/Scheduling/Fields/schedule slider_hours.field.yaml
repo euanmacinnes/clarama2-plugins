@@ -1,0 +1,8 @@
+field: 
+    name: Hours
+    hint: Either the number of hours between runs, or the specific hour to execute on
+    type: range
+    minimum: 0
+    maximum: 23
+    step: 1
+    default: 0

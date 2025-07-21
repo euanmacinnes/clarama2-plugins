@@ -1,0 +1,6 @@
+field:
+    name: Data Source Query
+    description: Enter any data source query to explore and/or update this data source
+    type: codeeditor
+    language: sql
+    min-height: 200px

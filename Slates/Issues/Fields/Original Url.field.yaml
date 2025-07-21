@@ -1,0 +1,3 @@
+field:
+    name: Original Url
+    default: "{basename(original_url)}"

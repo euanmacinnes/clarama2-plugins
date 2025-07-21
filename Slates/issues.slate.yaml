@@ -1,0 +1,31 @@
+slate:
+    grid:
+        children:
+        -   h: null
+            id: element_2
+            w: 3
+            x: 4
+            y: 0
+        -   h: 19
+            id: element_0
+            w: 12
+            x: 0
+            y: 1
+        elements:
+            element_0:
+                links:
+                -   element: modal
+                    params: ''
+                    uid: '0'
+                    url: ./Issues/Tasks/Add_Comments.task.yaml
+                params: ''
+                refresh: true
+                url: ./Issues/Tasks/Issues.task.yaml
+            element_2:
+                links:
+                -   element: modal
+                    params: ''
+                    uid: '0'
+                    url: ./Issues/Tasks/Add_Issues.task.yaml
+                spacing: '1'
+                url: ./Issues/Fields/Add New btn.field.yaml

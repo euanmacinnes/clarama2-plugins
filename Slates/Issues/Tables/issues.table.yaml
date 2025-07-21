@@ -1,0 +1,74 @@
+table:
+  source: "{{ clarama['Services']['ClaramaSourceDB'] }}"
+  name: "issues"
+  columns:
+    - name: issue_id
+      type: String
+      type-info:
+        length: 255
+      primary-key: True
+      record-id: True
+      nullable: False
+    - name: type
+      type: String
+      type-info:
+        length: 30
+      indexed: True
+      doc: Type of issue
+    - name: user_priority
+      type: String
+      type-info:
+        length: 30
+      indexed: True
+      doc: User's priority on the issue
+    - name: description
+      type: String
+      doc: Details about the issue
+    - name: path
+      type: String
+      doc: Path this issue was submitted at
+    - name: user
+      type: String
+      type-info:
+        length: 255
+      indexed: True
+      doc: The username that created the issue
+    - name: status
+      type: String
+      type-info:
+        length: 30
+      indexed: True
+      doc: Issue status (lowercase) - open, closed
+    - name: sub_status
+      type: String
+      type-info:
+        length: 30
+      indexed: True
+      doc: Issue sub-status (lowercase) - duplicate, invalid, wontfix
+    - name: assigned_to
+      type: String
+      type-info:
+        length: 255
+      indexed: True
+      doc: The users assigned to the issue      
+    - name: assigned_priority
+      type: String
+      type-info:
+        length: 30
+      indexed: True
+      doc: Assigned priority on the issue
+    - name: assigned_by
+      type: String
+      type-info:
+        length: 30
+      indexed: True
+      doc: Assigned priority on the issue
+    - name: date_created
+      type: DateTime
+      doc: Date & time this job issue created
+    - name: date_updated
+      type: DateTime
+      doc: Date & time this issue was last updated
+    - name: date_due
+      type: DateTime
+      doc: Date & time this issue was last updated      

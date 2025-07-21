@@ -1,0 +1,60 @@
+slate:
+    grid:
+        children:
+        -   h: null
+            id: element_2
+            w: null
+            x: 0
+            y: 0
+        -   h: null
+            id: element_1
+            w: 11
+            x: 1
+            y: 0
+        -   h: 6
+            id: element_0
+            w: 12
+            x: 0
+            y: 1
+        -   h: 13
+            id: element_3
+            w: 6
+            x: 0
+            y: 7
+        -   h: 13
+            id: element_7
+            w: 6
+            x: 6
+            y: 7
+        elements:
+            element_0:
+                autofill: true
+                links:
+                - element_7
+                -   element: element_3
+                    params: ''
+                    uid: NaN
+                    url: ''
+                -   contextMenu: true
+                    element: modal
+                    menu_item_name: Edit Cron
+                    params: ''
+                    url: ./Jobs/Tasks/Job_Update.task.yaml
+                params: ''
+                refresh: true
+                url: ./Jobs/Tasks/Jobs.task.yaml
+            element_1:
+                text: <h3>{basename(original_url)} jobs for { user }</h3>
+            element_2:
+                autofill: false
+                layout: basic
+                links:
+                - element_0
+                params: ''
+                refresh: false
+                url: ./Jobs/Fields/job_all_users.field.yaml
+            element_3:
+                url: ./Jobs/Tasks/Job_Details.task.yaml
+            element_7:
+                url: ./Jobs/Tasks/Jobs Chart.task.yaml
+

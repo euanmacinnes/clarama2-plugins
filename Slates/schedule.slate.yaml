@@ -1,0 +1,204 @@
+slate:
+    grid:
+        children:
+        -   h: null
+            id: element_0
+            w: 5
+            x: 1
+            y: 0
+        -   h: null
+            id: element_1
+            w: 5
+            x: 6
+            y: 0
+        -   h: null
+            id: element_4
+            w: 6
+            x: 0
+            y: 2
+        -   h: null
+            id: element_3
+            w: 6
+            x: 6
+            y: 2
+        -   h: null
+            id: element_21
+            w: 6
+            x: 0
+            y: 3
+        -   h: null
+            id: element_16
+            w: 6
+            x: 6
+            y: 3
+        -   h: null
+            id: element_7
+            w: 6
+            x: 0
+            y: 5
+        -   h: null
+            id: element_5
+            w: 6
+            x: 6
+            y: 5
+        -   h: null
+            id: element_23
+            w: 6
+            x: 0
+            y: 6
+        -   h: null
+            id: element_20
+            w: 6
+            x: 6
+            y: 6
+        -   h: null
+            id: element_6
+            w: 4
+            x: 0
+            y: 8
+        -   h: null
+            id: element_24
+            w: 8
+            x: 4
+            y: 8
+        -   h: null
+            id: element_11
+            w: null
+            x: 4
+            y: 9
+        -   h: null
+            id: element_10
+            w: null
+            x: 5
+            y: 9
+        -   h: null
+            id: element_14
+            w: null
+            x: 6
+            y: 9
+        -   h: null
+            id: element_15
+            w: null
+            x: 7
+            y: 9
+        -   h: null
+            id: element_13
+            w: null
+            x: 8
+            y: 9
+        -   h: null
+            id: element_9
+            w: null
+            x: 9
+            y: 9
+        -   h: null
+            id: element_12
+            w: null
+            x: 10
+            y: 9
+        -   h: null
+            id: element_2
+            w: 4
+            x: 0
+            y: 10
+        -   h: null
+            id: element_22
+            w: 8
+            x: 4
+            y: 10
+        -   h: null
+            id: element_17
+            w: 3
+            x: 4
+            y: 11
+        -   h: 7
+            id: element_19
+            w: 7
+            x: 2
+            y: 12
+        -   h: 13
+            id: element_18
+            w: 12
+            x: 0
+            y: 19
+        elements:
+            element_0:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule start date.field.yaml
+            element_1:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule end date.field.yaml
+            element_10:
+                layout: basic
+                url: ./Scheduling/Fields/schedule time_mon.field.yaml
+            element_11:
+                layout: basic
+                url: ./Scheduling/Fields/schedule time_sat.field.yaml
+            element_12:
+                layout: basic
+                url: ./Scheduling/Fields/schedule time_sun.field.yaml
+            element_13:
+                layout: basic
+                url: ./Scheduling/Fields/schedule time_thu.field.yaml
+            element_14:
+                layout: basic
+                url: ./Scheduling/Fields/schedule time_tue.field.yaml
+            element_15:
+                layout: basic
+                url: ./Scheduling/Fields/schedule time_wed.field.yaml
+            element_16:
+                layout: basic
+                url: ./Scheduling/Fields/schedule slider_minutes.field.yaml
+            element_17:
+                links:
+                -   element: element_19
+                    params: ''
+                    url: ./Scheduling/Tasks/Schedule.task.yaml
+                -   element: element_19
+                    params: ''
+                    uid: NaN
+                    url: ./Scheduling/Tasks/Schedule.task.yaml
+                url: ./Scheduling/Fields/schedule ok button.field.yaml
+            element_18:
+                url: ./Scheduling/Tasks/Scheduled Jobs.task.yaml
+            element_19:
+                autofill: false
+                autorun: 'NO'
+                params: ''
+                refresh: false
+                url: ./Scheduling/Tasks/Schedule.task.yaml
+            element_2:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule time_seconds.field.yaml
+            element_20:
+                layout: basic
+                url: ./Scheduling/Fields/schedule slider_days.field.yaml
+            element_21:
+                layout: basic
+                url: ./Scheduling/Fields/schedule slider_hours.field.yaml
+            element_22:
+                layout: basic
+                url: ./Scheduling/Fields/schedule slider_seconds.field.yaml
+            element_23:
+                layout: basic
+                url: ./Scheduling/Fields/schedule slider_months.field.yaml
+            element_24:
+                layout: basic
+                url: ./Scheduling/Fields/schedule slider_weeks.field.yaml
+            element_3:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule time_minutes.field.yaml
+            element_4:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule time_hours.field.yaml
+            element_5:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule time_days.field.yaml
+            element_6:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule time_weeks.field.yaml
+            element_7:
+                layout: topdown
+                url: ./Scheduling/Fields/schedule time_months.field.yaml
+            element_9:
+                url: ./Scheduling/Fields/schedule time_fri.field.yaml

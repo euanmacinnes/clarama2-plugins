@@ -1,0 +1,34 @@
+table:
+    source: "{{ clarama['Services']['ClaramaSourceDB'] }}"
+    name: "comments"
+    columns:
+        - name: comment_id
+          type: String
+          type-info:
+            length: 255
+          primary-key: True
+          record-id: True
+          nullable: False
+        - name: issue_id
+          type: String
+          type-info:
+            length: 255
+          references: 
+            - table: "issues"
+            - type: owner
+            - foreignkey: True
+          nullable: False
+        - name: reviewer
+          type: String
+          type-info:
+            length: 255
+          indexed: True
+          doc: The reviewer that attended this issue
+        - name: comment
+          type: String
+          doc: Reviewer's comment about the issue
+        - name: date_created
+          type: DateTime
+          doc: Date & time this job issue created
+            
+

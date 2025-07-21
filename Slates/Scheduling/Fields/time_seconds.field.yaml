@@ -1,0 +1,12 @@
+field:
+  name: Enable Seconds
+  type: select
+  options:
+    - id: off
+      value: Off
+    - id: x
+      value: Every .. Seconds
+    - id: nth
+      value: On The .. th Second every Minute
+  default: off
+  required: false

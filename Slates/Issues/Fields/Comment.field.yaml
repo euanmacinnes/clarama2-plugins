@@ -1,0 +1,4 @@
+field:
+  name: Comment
+  type: richtext
+  required: true

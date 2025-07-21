@@ -1,0 +1,8 @@
+field: 
+    name: Weeks
+    hint: Either the number of weeks between runs, or the specific week (per Year) to execute on
+    type: range
+    minimum: 1
+    maximum: 52
+    step: 1
+    default: 1

@@ -1,0 +1,8 @@
+field: 
+    name: Days
+    hint: Either the number of days between runs, or the specific day (of the month) to execute on
+    type: range
+    minimum: 1
+    maximum: 31
+    step: 1
+    default: 1

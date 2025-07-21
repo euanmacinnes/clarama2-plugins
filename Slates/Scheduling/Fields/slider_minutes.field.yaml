@@ -1,0 +1,8 @@
+field: 
+    name: Minutes
+    hint: Either the number of minutes between runs, or the specific minute to execute on
+    type: range
+    minimum: 0
+    maximum: 59
+    step: 1
+    default: 0

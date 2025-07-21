@@ -1,0 +1,17 @@
+field:
+    data:
+        action: null
+        options: null
+        params:
+            path: null
+            query: null
+        source: null
+    default: ''
+    description: 6-category CRON field
+    maximum: ''
+    minimum: ''
+    name: cron
+    placeholder: ''
+    spacing: '3'
+    step: ''
+    type: string

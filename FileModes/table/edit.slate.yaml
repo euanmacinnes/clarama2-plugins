@@ -1,0 +1,23 @@
+slate:
+    grid:
+        children:
+        -   h: 2
+            id: element_1
+            w: 2
+            x: 0
+            y: 0
+        -   h: 9
+            id: element_0
+            w: 11
+            x: 0
+            y: 3
+        elements:
+            element_0:
+                url: ''
+            element_1:
+                links:
+                -   element: element_0
+                    params: ''
+                    uid: '0'
+                    url: ./table_ensure.task.yaml
+                url: ./table_ensure.field.yaml

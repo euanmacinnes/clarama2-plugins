@@ -1,0 +1,79 @@
+task:
+    environment: native_shared.environment.yaml
+    fieldgrid:
+        children: []
+        elements: {}
+        values: {}
+    streams:
+    -   main:
+        -   chart:
+                advanced: ''
+                legend: 'Off'
+                series-annos:
+                -   anno-col: ''
+                    anno-col-back: ''
+                    anno-dt: false
+                    anno-label: ''
+                    anno-s: ''
+                    anno-tab: 0
+                    anno-type: box
+                    anno-u: ''
+                    anno-width: ''
+                    anno-x: ''
+                    anno-xm: ''
+                    anno-y: ''
+                    anno-ym: ''
+                series-formats:
+                -   format-col: ''
+                    format-col-back: ''
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                    format-ps: circle
+                    format-title: ''
+                    format-ua: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-tab: 0
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+                xaxis-type: category
+            loop-iterable: ''
+            output: table
+            table:
+                checkbox: false
+                export: false
+                filter: false
+                footer: false
+                multiselect-row: false
+                pagesize: '15'
+                pagination: true
+                search: false
+                sortable: true
+                style: default
+                title: ''
+            tabs:
+            -   content: select * from issues
+                source: ./../System/Data/Sources/Cross Instance/clarama dev postgres.source.yaml
+                tab_id: 0
+            type: data
+        -   content: issues = cell_results[-1][0]
+            loop-iterable: ''
+            type: code
+        -   loop-iterable: ''
+            source: ./../System/Data/Sources/Cross Instance/clarama live postgres.source.yaml
+            type: source
+        -   content: write(issues,object="issues",mode="append")
+            loop-iterable: ''
+            type: code

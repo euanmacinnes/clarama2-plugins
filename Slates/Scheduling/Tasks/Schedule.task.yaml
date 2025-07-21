@@ -1,0 +1,197 @@
+task:
+    environment: default
+    fieldgrid:
+        children:
+        -   id: element_12
+            w: 4
+            x: 0
+            y: 0
+        -   id: element_15
+            w: 4
+            x: 4
+            y: 0
+        -   id: element_7
+            w: 4
+            x: 8
+            y: 0
+        -   id: element_18
+            w: 4
+            x: 0
+            y: 1
+        -   id: element_5
+            w: 4
+            x: 4
+            y: 1
+        -   id: element_0
+            w: 4
+            x: 8
+            y: 1
+        -   id: element_19
+            w: 4
+            x: 0
+            y: 2
+        -   id: element_11
+            w: 4
+            x: 4
+            y: 2
+        -   id: element_17
+            w: 4
+            x: 0
+            y: 3
+        -   id: element_3
+            w: 4
+            x: 4
+            y: 3
+        -   id: element_9
+            w: 4
+            x: 0
+            y: 4
+        -   id: element_10
+            w: 4
+            x: 4
+            y: 4
+        -   id: element_14
+            w: 4
+            x: 0
+            y: 5
+        -   id: element_2
+            w: 4
+            x: 4
+            y: 5
+        -   id: element_16
+            w: 4
+            x: 0
+            y: 6
+        -   id: element_8
+            w: 4
+            x: 4
+            y: 6
+        -   id: element_1
+            w: 4
+            x: 4
+            y: 7
+        -   id: element_20
+            w: 4
+            x: 4
+            y: 8
+        -   id: element_6
+            w: 4
+            x: 4
+            y: 9
+        -   id: element_13
+            w: 4
+            x: 4
+            y: 10
+        -   id: element_4
+            w: 4
+            x: 4
+            y: 11
+        elements:
+            element_0:
+                url: ../Fields/schedule end date.field.yaml
+            element_1:
+                url: ../Fields/schedule slider_days.field.yaml
+            element_10:
+                url: ../Fields/schedule time_hours.field.yaml
+            element_11:
+                url: ../Fields/schedule time_minutes.field.yaml
+            element_12:
+                url: ../Fields/schedule time_mon.field.yaml
+            element_13:
+                url: ../Fields/schedule time_months.field.yaml
+            element_14:
+                url: ../Fields/schedule time_sat.field.yaml
+            element_15:
+                url: ../Fields/schedule time_seconds.field.yaml
+            element_16:
+                url: ../Fields/schedule time_sun.field.yaml
+            element_17:
+                url: ../Fields/schedule time_thu.field.yaml
+            element_18:
+                url: ../Fields/schedule time_tue.field.yaml
+            element_19:
+                url: ../Fields/schedule time_wed.field.yaml
+            element_2:
+                url: ../Fields/schedule slider_hours.field.yaml
+            element_20:
+                url: ../Fields/schedule time_weeks.field.yaml
+            element_3:
+                url: ../Fields/schedule slider_minutes.field.yaml
+            element_4:
+                url: ../Fields/schedule slider_months.field.yaml
+            element_5:
+                url: ../Fields/schedule slider_seconds.field.yaml
+            element_6:
+                url: ../Fields/schedule slider_weeks.field.yaml
+            element_7:
+                url: ../Fields/schedule start date.field.yaml
+            element_8:
+                url: ../Fields/schedule time_days.field.yaml
+            element_9:
+                url: ../Fields/schedule time_fri.field.yaml
+        values:
+            schedule_end_date: ''
+            schedule_slider_days: '1'
+            schedule_slider_hours: '0'
+            schedule_slider_minutes: '0'
+            schedule_slider_months: '1'
+            schedule_slider_seconds: '0'
+            schedule_slider_weeks: '1'
+            schedule_start_date: ''
+            schedule_time_days: 'off'
+            schedule_time_fri: false
+            schedule_time_hours: nth
+            schedule_time_minutes: disabled
+            schedule_time_mon: false
+            schedule_time_months: 'off'
+            schedule_time_sat: false
+            schedule_time_seconds: disabled
+            schedule_time_sun: false
+            schedule_time_thu: false
+            schedule_time_tue: false
+            schedule_time_wed: false
+            schedule_time_weeks: 'off'
+    streams:
+    -   main:
+        -   content: "def process_cron(time_unit, parameters, validity):\n    state\
+                \ = parameters[f'schedule_time_{time_unit}']\n    duration = int(parameters[f'schedule_slider_{time_unit}'])\n\
+                #    print(f\"{time_unit}: - {state} {duration}\")\n    if state ==\
+                \ 'off':\n        return \"*\", True, validity\n        \n    if state\
+                \ == 'x':\n        if duration == 0:\n            return '', False,\
+                \ validity + f\" {time_unit} can't be 0 when using 'Every ..'. \"\n\
+                \        return f'*/{duration}', True, validity\n    \n    if state\
+                \ == 'nth':\n        return f'{duration}', True, validity\n      \
+                \  \n    if state == 'disabled':\n        return f'0', True, validity\n\
+                \ncron = None\ntask_params = {}\nfor k, v in parameters.items():\n\
+                \    if k[:9]!='schedule_' and k not in ['original_url','clarama_task_kill']\
+                \ and k[:8]!='clarama_' and k[:8]!='element_' and k != 'layout' and\
+                \ k not in ['autorefresh', 'debug_theme']:\n        task_params[k]=v\n\
+                \nif parameters['schedule_time_seconds']!='off' or parameters['schedule_time_minutes']!='off'\
+                \ or parameters['schedule_time_hours']!='off' or parameters['schedule_time_weeks']!='off'\
+                \ or parameters['schedule_time_days']!='off' or parameters['schedule_time_months']!='off':\n\
+                \    validity = ''\n    cron_sec, sec_val, validity = process_cron('seconds',\
+                \ parameters, validity)\n    cron_min, min_val, validity = process_cron('minutes',\
+                \ parameters, validity)\n    cron_hrs, hrs_val, validity = process_cron('hours',\
+                \ parameters, validity)\n    cron_dys, dys_val, validity = process_cron('days',\
+                \ parameters, validity)\n    cron_mts, mts_val, validity = process_cron('months',\
+                \ parameters, validity)\n    \n    cron_wks, wks_val, validity = process_cron('weeks',\
+                \ parameters, validity)\n    \n    if cron_wks!='*':\n        print('Weeks!\
+                \ disabling others')\n        cron_sec = '*'\n        cron_min = '*'\n\
+                \        cron_hrs = '*'\n        cron_dys = '*'\n        cron_mts\
+                \ = '*'\n        sec_val = True\n        min_val = True\n        hrs_val\
+                \ = True\n        dys_val = True\n        mts_val = True\n       \
+                \ \n    if (sec_val & min_val & hrs_val & dys_val & mts_val):\n  \
+                \      cron = f\"{ cron_min } { cron_hrs } { cron_dys } { cron_wks\
+                \ } { cron_mts }\"\n        \n        if cron == \"0 0 * * *\":\n\
+                \            print(\"Please select a time to schedule\")\n       \
+                \     cron = None\n        else:\n            print(f\"scheduling\
+                \ task with { cron }\")\n            print(f\"parameters: { task_params\
+                \ }\")\n    else:\n        print(\"Invalid time setting:\" + validity)\n\
+                else:\n    print(\"Nothing to schedule\")\n    \nif 'original_url'\
+                \ in parameters and cron is not None:\n    date_from = parameters['schedule_start_date']\n\
+                \    date_to = parameters['schedule_end_date']\n    print(\"Date From:\"\
+                , date_from, \"Date To:\" , date_to, \" for \", user['username'])\n\
+                \    job_id=job(\"task\",parameters['original_url'], cron, None, date_to,\
+                \ **task_params)"
+            loop-iterable: ''
+            type: code

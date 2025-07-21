@@ -1,0 +1,95 @@
+task:
+    environment: default
+    fieldgrid:
+        children:
+        -   h: 6
+            id: element_0
+            w: 12
+            x: 0
+            y: 0
+        elements:
+            element_0:
+                spacing: '1'
+                url: ./../Fields/Comment.field.yaml
+        values:
+            comment: ''
+    streams:
+    -   main:
+        -   content: "from datetime import datetime\nimport uuid\n\n# generate unique\
+                \ comment_id and get current timestamp\ncomment_id = str(uuid.uuid4())\n\
+                now = datetime.now().isoformat()\nreviewer = user['username']\n\n\
+                if 'comment' in parameters:\n    comment = parameters['comment'].strip().replace(\"\
+                '\", \"''\")  # escape single quotes\n\nif 'issue_id' in parameters:\n\
+                \    issue_id = parameters['issue_id']\n    add=True\n    print(\"\
+                parameters: \" + issue_id)\nelse:\n    issue_id = \"f2247711-513a-4423-8fe3-6dff407a6616\"\
+                \n    add = False\n    print(\"no issue_id parameter\")"
+            loop-iterable: ''
+            type: code
+        -   chart:
+                advanced: ''
+                legend: 'Off'
+                series-annos:
+                -   anno-col: ''
+                    anno-col-back: ''
+                    anno-dt: false
+                    anno-label: ''
+                    anno-s: ''
+                    anno-tab: 0
+                    anno-type: box
+                    anno-u: ''
+                    anno-width: ''
+                    anno-x: ''
+                    anno-xm: ''
+                    anno-y: ''
+                    anno-ym: ''
+                series-formats:
+                -   format-col: ''
+                    format-col-back: ''
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                    format-ps: circle
+                    format-title: ''
+                    format-ua: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-tab: 0
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+                xaxis-type: category
+            loop-iterable: add
+            output: table
+            table:
+                checkbox: false
+                export: false
+                filter: false
+                footer: false
+                multiselect-row: false
+                pagesize: '15'
+                pagination: true
+                search: false
+                sortable: true
+                style: default
+                title: ''
+            tabs:
+            -   content: 'INSERT INTO comments (comment_id, issue_id, reviewer, comment,
+                    date_created)
+
+                    VALUES (''{comment_id}'', ''{issue_id}'', ''{reviewer}'', ''{comment}'',
+                    ''{ now }'');
+
+                    COMMIT;'
+                source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
+                tab_id: 0
+            type: data

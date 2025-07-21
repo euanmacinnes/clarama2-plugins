@@ -1,0 +1,13 @@
+field:
+  name: Enable Days
+  type: select
+  data:
+    options:
+      - id: off
+        value: All
+      - id: x
+        value: Every .. Days
+      - id: nth
+        value: On The .. th Day of the Month
+  default: off
+  required: false

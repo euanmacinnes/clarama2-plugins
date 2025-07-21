@@ -1,0 +1,11 @@
+field:
+  name: Status
+  description:
+    Current issue status
+  type: select
+  required: true
+  default: "Open"
+  data:
+      options:
+        - Open
+        - Closed

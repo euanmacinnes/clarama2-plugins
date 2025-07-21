@@ -1,0 +1,38 @@
+slate:
+    grid:
+        children:
+        -   h: 12
+            id: element_1
+            w: 3
+            x: 0
+            y: 0
+        -   h: 4
+            id: element_2
+            w: 9
+            x: 3
+            y: 0
+        -   h: null
+            id: element_3
+            w: null
+            x: 3
+            y: 4
+        -   h: 19
+            id: element_4
+            w: 9
+            x: 3
+            y: 5
+        elements:
+            element_1:
+                links:
+                - element_4
+                url: ./Fields/source.task.yaml
+            element_2:
+                layout: basic
+                url: ./Fields/query.field.yaml
+            element_3:
+                layout: basic
+                links:
+                - element_4
+                url: ./Fields/ok button.field.yaml
+            element_4:
+                url: ./Fields/query_result.task.yaml
