@@ -6,7 +6,7 @@ field:
             path: null
             query: null
         source: null
-    default: ''
+    default: "{{ row['cron'] or '' }}"
     description: 6-category CRON field
     maximum: ''
     minimum: ''
@@ -15,3 +15,4 @@ field:
     spacing: '3'
     step: ''
     type: string
+
