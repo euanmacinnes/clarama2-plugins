@@ -1,0 +1,19 @@
+field:
+  data:
+    action: null
+    options: null
+    params:
+      path: null
+      query: null
+    source: null
+  default: ''
+  description: User's priority on the issue
+  maximum: ''
+  minimum: ''
+  name: user_priority
+  placeholder: ''
+  readonly: false
+  required: false
+  spacing: '3'
+  step: ''
+  type: string

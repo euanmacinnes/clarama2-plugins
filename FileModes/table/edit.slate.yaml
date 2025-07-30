@@ -3,14 +3,19 @@ slate:
         children:
         -   h: 2
             id: element_1
-            w: 2
+            w: 3
             x: 0
             y: 0
-        -   h: 9
+        -   h: 2
+            id: element_2
+            w: 3
+            x: 3
+            y: 0
+        -   h: 5
             id: element_0
-            w: 11
+            w: 6
             x: 0
-            y: 3
+            y: 2
         elements:
             element_0:
                 url: ''
@@ -21,3 +26,11 @@ slate:
                     uid: '0'
                     url: ./table_ensure.task.yaml
                 url: ./table_ensure.field.yaml
+            element_2:
+                links:
+                -   element: hidden
+                    params: ''
+                    uid: '0'
+                    url: ./table_field_generator.task.yaml
+                spacing: '1'
+                url: ./table_field_generator.field.yaml

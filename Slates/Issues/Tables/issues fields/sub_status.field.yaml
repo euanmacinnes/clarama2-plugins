@@ -1,0 +1,19 @@
+field:
+  data:
+    action: null
+    options: null
+    params:
+      path: null
+      query: null
+    source: null
+  default: ''
+  description: Issue sub-status (lowercase) - duplicate, invalid, wontfix
+  maximum: ''
+  minimum: ''
+  name: sub_status
+  placeholder: ''
+  readonly: false
+  required: false
+  spacing: '3'
+  step: ''
+  type: string

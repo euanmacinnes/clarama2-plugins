@@ -1,0 +1,19 @@
+field:
+  data:
+    action: null
+    options: null
+    params:
+      path: null
+      query: null
+    source: null
+  default: ''
+  description: Date & time this job issue created
+  maximum: ''
+  minimum: ''
+  name: date_created
+  placeholder: ''
+  readonly: false
+  required: false
+  spacing: '3'
+  step: ''
+  type: datetime

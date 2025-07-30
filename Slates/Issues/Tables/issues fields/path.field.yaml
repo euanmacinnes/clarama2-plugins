@@ -1,0 +1,19 @@
+field:
+  data:
+    action: null
+    options: null
+    params:
+      path: null
+      query: null
+    source: null
+  default: ''
+  description: Path this issue was submitted at
+  maximum: ''
+  minimum: ''
+  name: path
+  placeholder: ''
+  readonly: false
+  required: false
+  spacing: '3'
+  step: ''
+  type: string

@@ -1,5 +1,5 @@
 field:
     name: Description
     type: richtext
-    default: "{{ row['description'] or 'hi'}}"
+    default: "{{ record['description'] or row['description'] or 'hi'}}"
     required: true

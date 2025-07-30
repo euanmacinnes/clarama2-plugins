@@ -74,7 +74,7 @@ task:
                 pagesize: '15'
                 pagination: true
                 search: true
-                slate: ''
+                slate: './../Issue Row.slate.yaml'
                 sortable: true
                 style: default
                 title: ''
@@ -88,3 +88,4 @@ task:
                 source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
+

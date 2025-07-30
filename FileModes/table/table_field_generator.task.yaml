@@ -1,0 +1,41 @@
+task:
+    environment: native_shared.environment.yaml
+    fieldgrid:
+        children: []
+        elements: {}
+        values: {}
+    streams:
+    -   main:
+        -   content: "import yaml\nimport os\n\nif 'original_url' in parameters:\n\
+                \    table_path = parameters['original_url']\n    print(\"original_url\
+                \ \" + table_path)\n    \n    table_dir = os.path.dirname(table_path)\n\
+                \    print(\"table_dir \" + table_dir)\n    \n    if (file.exists(table_path)):\n\
+                \        content = file.download(table_path)\n        # print(content)\n\
+                \        \n        table_content = yaml.safe_load(content)\n     \
+                \   # print(table_content)\n        # print(type(table_content))\n\
+                \        \n        table_name = table_content['table']['name']\n \
+                \       table_columns = table_content['table']['columns']\n      \
+                \  # print(table_name)\n        # print(table_columns)\n        \n\
+                \        folder.create(f\"{table_dir}/{table_name} fields\")\n   \
+                \     # folder.create(f\"./{table_name} fields\")\n        for col\
+                \ in table_columns:\n            if \"doc\" in col:\n            \
+                \    desc = col['doc']\n            else:\n                desc =\
+                \ ''\n            # print(f\"name: {col['name']}, type: {col['type']},\
+                \ doc: {desc}\")\n            data = {\n              \"field\": {\n\
+                \                  \"data\": {\n                      \"action\":\
+                \ None,\n                      \"options\": None,\n              \
+                \        \"params\": {\n                          \"path\": None,\n\
+                \                          \"query\": None\n                     \
+                \ },\n                      \"source\": None\n                  },\n\
+                \                  \"default\": '',\n                  \"description\"\
+                : desc,\n                  \"maximum\": '',\n                  \"\
+                minimum\": '',\n                  \"name\": col['name'],\n       \
+                \           \"placeholder\": '',\n                  \"readonly\":\
+                \ False,\n                  \"required\": False,\n               \
+                \   \"spacing\": '3',\n                  \"step\": '',\n         \
+                \         \"type\": col['type'].lower()\n              }\n       \
+                \     }\n            \n            # print(data)\n            yaml_str\
+                \ = yaml.dump(data, sort_keys=False)\n            file.put(f\"{table_dir}/{table_name}\
+                \ fields/{col['name']}.field.yaml\", yaml_str)\n    "
+            loop-iterable: ''
+            type: code

@@ -1,0 +1,19 @@
+field:
+  data:
+    action: null
+    options: null
+    params:
+      path: null
+      query: null
+    source: null
+  default: ''
+  description: Assigned priority on the issue
+  maximum: ''
+  minimum: ''
+  name: assigned_priority
+  placeholder: ''
+  readonly: false
+  required: false
+  spacing: '3'
+  step: ''
+  type: string
