@@ -1,0 +1,27 @@
+slate:
+    grid:
+        children:
+        -   h: 8
+            id: element_0
+            w: 4
+            x: 0
+            y: 0
+        -   h: 2
+            id: element_1
+            w: 2
+            x: 4
+            y: 0
+        -   h: 2
+            id: element_2
+            w: 2
+            x: 4
+            y: 2
+        elements:
+            element_0:
+                url: ./Fields/Description.field.yaml
+            element_1:
+                spacing: '5'
+                url: ./Fields/Status.field.yaml
+            element_2:
+                spacing: '5'
+                url: ./Fields/User Priority.field.yaml

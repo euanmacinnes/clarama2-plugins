@@ -25,14 +25,17 @@ task:
                 text: Edit the CRON settings, then press Play to save the results
         values:
             cron: ''
-            local_slates_tasks_job_update_task_yaml_element_2: Edit the CRON settings,
-                then press Play to save the results
+            system_plugins_slates_jobs_tasks_job_update_task_yaml_element_2: Edit
+                the CRON settings, then press Play to save the results
             uuid: ''
     streams:
     -   main:
         -   content: "update=False\n\nif 'row' in parameters:\n    update=True"
             loop-iterable: ''
             type: code
+        -   content: alert(parameters)
+            loop-iterable: ''
+            type: code
         -   chart:
                 advanced: ''
                 legend: 'Off'
@@ -40,6 +43,7 @@ task:
                 -   anno-col: ''
                     anno-col-back: ''
                     anno-dt: false
+                    anno-i: ''
                     anno-label: ''
                     anno-s: ''
                     anno-tab: 0
@@ -76,8 +80,8 @@ task:
                 subtitle: ''
                 title: ''
                 xaxis-type: category
-            loop-iterable: update
-            output: table
+            loop-iterable: ''
+            output: code
             table:
                 checkbox: false
                 export: false
@@ -87,18 +91,16 @@ task:
                 pagesize: '15'
                 pagination: true
                 search: false
+                slate: ''
                 sortable: true
                 style: default
                 title: ''
             tabs:
-            -   content: "update jobs \n\nset cron='{parameters['row']['cron']}' \n\
-                    where uuid='{parameters['row']['uuid']}';\ncommit;\n"
+            -   content: "update jobs \nset cron='{parameters['cron']}' \nwhere uuid='{parameters['uuid']}';\n\
+                    commit;\n"
                 source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
-        -   content: alert("Job updated")
-            loop-iterable: update
-            type: code
         -   chart:
                 advanced: ''
                 legend: 'Off'
@@ -106,6 +108,7 @@ task:
                 -   anno-col: ''
                     anno-col-back: ''
                     anno-dt: false
+                    anno-i: ''
                     anno-label: ''
                     anno-s: ''
                     anno-tab: 0
@@ -153,6 +156,7 @@ task:
                 pagesize: '15'
                 pagination: true
                 search: false
+                slate: ''
                 sortable: true
                 style: default
                 title: ''
@@ -160,7 +164,6 @@ task:
             -   content: 'select uuid, cron from jobs
 
                     where uuid=''{parameters[''uuid'']}'''
-                source: ''
+                source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
-
