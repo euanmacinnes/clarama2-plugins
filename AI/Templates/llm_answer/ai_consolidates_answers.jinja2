@@ -1,0 +1,29 @@
+You will be given a number of answers to the following question.
+Each of these answers is given by a separate bot that specialises
+in certain aspects.
+
+## User Question
+{{ original_question }}
+
+## Answers
+{% for q in rephrased_questions %}
+**Bot name: {{ q.name }}**
+{{ parsed_previous_result[loop.index0] }}
+---
+{% endfor %}
+
+Your task is to create one single answer to the given question, given the answers
+provided above.
+
+Include aspects of all bots that you have answers for. Even if answers overlap,
+always include what all the bots have responded.
+
+Make sure to make reference to the source of all the parts of the answer.
+Do this by placing the name of the bot that provided that part of the answer,
+in between square brackets, directly after the partial answer used.
+
+Do not make up new answers.
+Purely use the provided answers in to final answer to the question.
+
+Only output the consolidated answer.
+Do NOT explain why this answer is correct.

@@ -1,0 +1,7 @@
+Your question will be asked as follows:
+{% for q in rephrased_questions %}
+> ### {{ q.name }}
+> __{{ q.question }}__
+>
+> {{ q.reason }}
+{% endfor %}

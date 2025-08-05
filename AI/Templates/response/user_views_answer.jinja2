@@ -1,0 +1,11 @@
+{{ answer }}
+
+{%- if news %}
+### In the news
+{% for n in news %}
+> ### [{{ n.title }}]({{ n.url }})
+> {{ n.content }}
+{% endfor %}
+{% endif -%}
+
+{{ follow_up }}
