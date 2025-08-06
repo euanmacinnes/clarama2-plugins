@@ -28,9 +28,10 @@ slate:
                 url: ./table_ensure.field.yaml
             element_2:
                 links:
-                -   element: hidden
+                -   element: element_0
                     params: ''
                     uid: '0'
                     url: ./table_field_generator.task.yaml
+                    wait: true
                 spacing: '1'
                 url: ./table_field_generator.field.yaml

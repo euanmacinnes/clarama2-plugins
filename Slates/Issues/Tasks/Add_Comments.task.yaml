@@ -7,22 +7,30 @@ task:
             w: 12
             x: 0
             y: 0
+        -   id: element_1
+            w: 12
+            x: 0
+            y: 6
         elements:
             element_0:
                 spacing: '1'
                 url: ./../Fields/Comment.field.yaml
+            element_1:
+                spacing: '1'
+                url: ./../Tables/comments fields/issue_id.field.yaml
         values:
             comment: ''
+            issue_id: ''
     streams:
     -   main:
         -   content: "from datetime import datetime\nimport uuid\n\n# generate unique\
                 \ comment_id and get current timestamp\ncomment_id = str(uuid.uuid4())\n\
                 now = datetime.now().isoformat()\nreviewer = user['username']\n\n\
                 if 'comment' in parameters:\n    comment = parameters['comment'].strip().replace(\"\
-                '\", \"''\")  # escape single quotes\n\nif 'issue_id' in parameters:\n\
-                \    issue_id = parameters['issue_id']\n    add=True\n    print(\"\
-                parameters: \" + issue_id)\nelse:\n    issue_id = \"f2247711-513a-4423-8fe3-6dff407a6616\"\
-                \n    add = False\n    print(\"no issue_id parameter\")"
+                '\", \"''\")  # escape single quotes\n\nadd = False\nif 'issue_id'\
+                \ in parameters:\n    issue_id = parameters['issue_id']\n    \n  \
+                \  if issue_id != \"\":\n        add = True\n        print(\"parameters:\
+                \ \" + issue_id)"
             loop-iterable: ''
             type: code
         -   chart:
@@ -32,6 +40,7 @@ task:
                 -   anno-col: ''
                     anno-col-back: ''
                     anno-dt: false
+                    anno-i: ''
                     anno-label: ''
                     anno-s: ''
                     anno-tab: 0
@@ -79,6 +88,7 @@ task:
                 pagesize: '15'
                 pagination: true
                 search: false
+                slate: ''
                 sortable: true
                 style: default
                 title: ''

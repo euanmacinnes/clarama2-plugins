@@ -4,7 +4,7 @@ field:
     Current issue status
   type: select
   required: true
-  default: "Open"
+  default: "{{ record['status'] or row['status'] or 'Open'}}"
   data:
       options:
         - Open

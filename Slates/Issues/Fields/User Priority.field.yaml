@@ -2,6 +2,7 @@ field:
   name: Priority of Issue
   type: select
   required: true
+  default: "{{ record['user_priority'] or row['user_priority'] or 'Low'}}"
   data:
       options:
         - Low

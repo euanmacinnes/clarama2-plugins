@@ -1,4 +1,19 @@
 field:
-    name: Add New Comment
-    default: "Add"
+    data:
+        action: null
+        options: null
+        params:
+            path: null
+            query: null
+        source: null
+    default: Add New Comment
+    description: ''
+    maximum: ''
+    minimum: ''
+    name: ''
+    placeholder: ''
+    readonly: false
+    required: false
+    spacing: '3'
+    step: ''
     type: button

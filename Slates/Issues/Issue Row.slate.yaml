@@ -1,32 +1,68 @@
 slate:
     grid:
         children:
-        -   h: 7
-            id: element_0
+        -   h: null
+            id: element_4
             w: 4
             x: 0
             y: 0
         -   h: null
-            id: element_3
-            w: 4
+            id: element_1
+            w: 3
             x: 4
             y: 0
-        -   h: null
-            id: element_2
+        -   h: 8
+            id: element_6
+            w: 5
+            x: 7
+            y: 0
+        -   h: 7
+            id: element_0
             w: 4
+            x: 0
+            y: 1
+        -   h: 2
+            id: element_3
+            w: 3
             x: 4
             y: 1
         -   h: null
-            id: element_1
-            w: 4
+            id: element_2
+            w: 3
             x: 4
-            y: 2
+            y: 3
+        -   h: null
+            id: element_5
+            w: null
+            x: 4
+            y: 4
         elements:
             element_0:
                 url: ./Fields/Description.field.yaml
             element_1:
+                spacing: '5'
                 url: ./Fields/User Priority.field.yaml
             element_2:
+                links:
+                -   element: modal
+                    params: ''
+                    uid: '0'
+                    url: ./Tasks/Add_Comments.task.yaml
+                    wait: false
+                -   element: element_6
+                    params: ''
+                    uid: '1'
+                    url: ''
+                    wait: true
+                spacing: '1'
                 url: ./Fields/Add Comment.field.yaml
             element_3:
+                spacing: '5'
                 url: ./Fields/Status.field.yaml
+            element_4:
+                spacing: '3'
+                url: ./Fields/Type.field.yaml
+            element_5:
+                url: ./Tables/issues fields/issue_id.field.yaml
+            element_6:
+                url: ./Tasks/Comments.task.yaml

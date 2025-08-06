@@ -2,6 +2,7 @@ field:
   name: Issue Type
   type: select
   required: true
+  default: "{{ record['type'] or row['type'] or 'Issue'}}"
   data:
       options:
         - Bug
@@ -10,3 +11,4 @@ field:
         - Help Wanted
         - Question
         - Issue
+

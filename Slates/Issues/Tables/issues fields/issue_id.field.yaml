@@ -1,19 +1,20 @@
 field:
-  data:
-    action: null
-    options: null
-    params:
-      path: null
-      query: null
-    source: null
-  default: ''
-  description: ''
-  maximum: ''
-  minimum: ''
-  name: issue_id
-  placeholder: ''
-  readonly: false
-  required: false
-  spacing: '3'
-  step: ''
-  type: string
+    data:
+        action: null
+        options: null
+        params:
+            path: null
+            query: null
+        source: null
+    default: "{{ record['issue_id'] or row['issue_id'] or ''}}"
+    description: ''
+    maximum: ''
+    minimum: ''
+    name: ''
+    placeholder: ''
+    readonly: true
+    required: false
+    spacing: '3'
+    step: ''
+    type: hidden
+
