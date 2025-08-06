@@ -1,0 +1,7 @@
+invoker:
+  type: genie_flow_invoker.invoker.searx.SearxInvoker
+  searx_url: http://192.168.0.188:8081
+  #categories: general
+  engines: google,bing
+  language: en-US
+  time_range: day

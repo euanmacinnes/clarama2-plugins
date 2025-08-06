@@ -1,0 +1,9 @@
+Good day and welcome to the Omni Genie demo.
+
+I am able to help you with questions to the following bots:
+
+{%- for bot_name in bots.keys() %}
+{{ loop.index }}. {{ bot_name }}
+{%- endfor %}
+
+Please go ahead and ask me anything.
