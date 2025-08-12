@@ -16,7 +16,8 @@ field:
     required: false
     spacing: '3'
     step: ''
-    type: hidden
+    type: string
+
 
 
 

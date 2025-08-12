@@ -26,16 +26,21 @@ slate:
             w: 3
             x: 4
             y: 1
-        -   h: null
-            id: element_2
+        -   h: 2
+            id: element_7
             w: 3
             x: 4
             y: 3
         -   h: null
-            id: element_5
-            w: null
+            id: element_2
+            w: 3
             x: 4
-            y: 4
+            y: 5
+        -   h: null
+            id: element_5
+            w: 3
+            x: 4
+            y: 6
         elements:
             element_0:
                 url: ./Fields/Description.field.yaml
@@ -49,11 +54,6 @@ slate:
                     uid: '0'
                     url: ./Tasks/Add_Comments.task.yaml
                     wait: false
-                -   element: element_6
-                    params: ''
-                    uid: '1'
-                    url: ''
-                    wait: true
                 spacing: '1'
                 url: ./Fields/Add Comment.field.yaml
             element_3:
@@ -63,6 +63,11 @@ slate:
                 spacing: '3'
                 url: ./Fields/Type.field.yaml
             element_5:
+                links: []
+                spacing: '1'
                 url: ./Tables/issues fields/issue_id.field.yaml
             element_6:
                 url: ./Tasks/Comments.task.yaml
+            element_7:
+                spacing: '5'
+                url: ./Tables/issues fields/assigned_to.field.yaml

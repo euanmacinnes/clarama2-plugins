@@ -1,28 +1,21 @@
 task:
     environment: default
     fieldgrid:
-        children:
-        -   id: element_2
-            w: 4
-            x: 0
-            y: 0
+        children: []
         elements:
             element_0:
                 url: ./Add_Comments.task.yaml
             element_1:
                 url: ./../Fields/issues/Comment.field.yaml
-            element_2:
-                url: ./../Tables/comments fields/issue_id.field.yaml
-        values:
-            issue_id: ''
+        values: {}
     streams:
     -   main:
-        -   content: "filters = []\n\nrun = False\nif 'issue_id' in parameters:\n\
-                \    issue_id = parameters['issue_id']\n    \n    if issue_id != \"\
-                \":\n        print(\"issue_id: \" + issue_id)\n        filters.append(f\"\
-                \"\"issue_id = '{issue_id}'\"\"\")\n        run = True\n\nfilter=\"\
-                \"\n\nif len(filters)>0:\n    filter = 'WHERE ' + ' AND '.join(filters)\n\
-                \nprint(\"Filter:\", filter)"
+        -   content: "filters = []\r\n\r\nrun = False\r\nif 'issue_id' in parameters:\r\
+                \n    issue_id = parameters['issue_id']\r\n    \r\n    if issue_id\
+                \ != \"\":\r\n        print(\"issue_id: \" + issue_id)\r\n       \
+                \ filters.append(f\"\"\"issue_id = '{issue_id}'\"\"\")\r\n       \
+                \ run = True\r\n\r\nfilter=\"\"\r\n\r\nif len(filters)>0:\r\n    filter\
+                \ = 'WHERE ' + ' AND '.join(filters)\r\n\r\nprint(\"Filter:\", filter)\r"
             loop-iterable: ''
             type: code
         -   chart:
@@ -72,28 +65,25 @@ task:
             loop-iterable: run
             output: table
             table:
-                checkbox: true
+                checkbox: false
                 export: false
                 filter: false
                 footer: false
                 multiselect-row: false
                 pagesize: '15'
                 pagination: true
-                search: true
+                search: false
                 slate: ''
                 sortable: true
                 style: default
                 title: ''
             tabs:
-            -   content: 'select comment_id, issue_id, reviewer, comment, date_created
-
-                    from comments
-
-                    {filter}
-
-                    ORDER BY date_created DESC
-
-                    LIMIT 3;'
+            -   content: "select comment_id, issue_id, reviewer, comment, date_created\r\
+                    \nfrom comments\r\n{filter}\r\nORDER BY date_created DESC\r\n\
+                    LIMIT 3;"
                 source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
+        -   content: print(parameters)
+            loop-iterable: ''
+            type: code

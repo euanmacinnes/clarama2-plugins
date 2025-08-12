@@ -45,57 +45,181 @@ task:
                 \        print(\"fields have been generated before\")\n    "
             loop-iterable: ''
             type: code
-        -   content: "# create a task to view table\ntask_data = {\n    \"task\":\
-                \ {\n        \"environment\": 'native_shared.environment.yaml',\n\
-                \        \"fieldgrid\": {\n            \"children\": [],\n       \
-                \     \"elements\": {},\n            \"values\": {},\n        },\n\
-                \        \"streams\": {\n            \"main\": [\n               \
-                \ \"chart\": {\n                    \"advanced\": '',\n          \
-                \          \"legend\": 'Off',\n                    \"series-annos\"\
-                : [\n                        \"anno-col\": '',\n                 \
-                \       \"anno-col-back\": '',\n                        \"anno-dt\"\
-                : False,\n                        \"anno-i\": '',\n              \
-                \          \"anno-label\": '',\n                        \"anno-s\"\
-                : '',\n                        \"anno-tab\": 0,\n                \
-                \        \"anno-type\": 'box',\n                        \"anno-u\"\
-                : '',\n                        \"anno-width\": '',\n             \
-                \           \"anno-x\": '',\n                        \"anno-xm\":\
-                \ '',\n                        \"anno-y\": '',\n                 \
-                \       \"anno-ym\": '',\n                    ],\n               \
-                \     \"series-formats\": [\n                        \"format-col\"\
-                : '',\n                        \"format-col-back\": '',\n        \
-                \                \"format-dt\": False,\n                        \"\
-                format-f\": False,\n                        \"format-lw\": '',\n \
-                \                       \"format-nrx\": '',\n                    \
-                \    \"format-p\": False,\n                        \"format-pr\":\
-                \ '',\n                        \"format-ps\": 'circle',\n        \
-                \                \"format-title\": '',\n                        \"\
-                format-ua\": '',\n                    ],\n                    \"series-groups\"\
-                : [\n                        \"series-l\": '',\n                 \
-                \       \"series-s\": '',\n                        \"series-tab\"\
-                : 0,\n                        \"series-type\": 'Line',\n         \
-                \               \"series-u\": '',\n                        \"series-x\"\
-                : '',\n                        \"series-y\": '',\n               \
-                \         \"series-ymax\": '',\n                        \"series-ymin\"\
-                : '',\n                        \"series-z\": '',\n               \
-                \     ],\n                    \"subtitle\": '',\n                \
-                \    \"title\": '',\n                    \"xaxis-type\": 'category',\n\
-                \                },\n                \"loop-iterable\": '',\n    \
-                \            \"output\": 'table',\n                \"table\": {\n\
-                \                    \"checkbox\": False,\n                    \"\
-                export\": False,\n                    \"filter\": False,\n       \
-                \             \"footer\": False,\n                    \"multiselect-row\"\
-                : False,\n                    \"pagesize\": '15',\n              \
-                \      \"pagination\": True,\n                    \"search\": False,\n\
-                \                    \"slate\": '',\n                    \"sortable\"\
-                : True,\n                    \"style\": 'default',\n             \
-                \       \"title\": '',\n                },\n                \"tabs\"\
-                : [\n                    \"content\": 'select * from ' + table_name,\n\
-                \                    \"source\": '{ Clarama[''Services''][''ClaramaSourceDB'']\
-                \ }',\n                    \"tab_id\": 0,\n                ],\n  \
-                \              \"type\": 'data'\n            ]\n        }\n    }\n\
-                }\n\nyaml_str = yaml.dump(task_data, sort_keys=False)\nfile.put(f\"\
-                {table_dir}/{table_name}.task.yaml\", yaml_str)"
+        -   content: '# create a task to view table
+
+                # task_data = {
+
+                #     "task": {
+
+                #         "environment": ''native_shared.environment.yaml'',
+
+                #         "fieldgrid": {
+
+                #             "children": [],
+
+                #             "elements": {},
+
+                #             "values": {},
+
+                #         },
+
+                #         "streams": [
+
+                #             "main": [
+
+                #                 "chart": {
+
+                #                     "advanced": '''',
+
+                #                     "legend": ''Off'',
+
+                #                     "series-annos": [
+
+                #                         "anno-col": '''',
+
+                #                         "anno-col-back": '''',
+
+                #                         "anno-dt": False,
+
+                #                         "anno-i": '''',
+
+                #                         "anno-label": '''',
+
+                #                         "anno-s": '''',
+
+                #                         "anno-tab": 0,
+
+                #                         "anno-type": ''box'',
+
+                #                         "anno-u": '''',
+
+                #                         "anno-width": '''',
+
+                #                         "anno-x": '''',
+
+                #                         "anno-xm": '''',
+
+                #                         "anno-y": '''',
+
+                #                         "anno-ym": '''',
+
+                #                     ],
+
+                #                     "series-formats": [
+
+                #                         "format-col": '''',
+
+                #                         "format-col-back": '''',
+
+                #                         "format-dt": False,
+
+                #                         "format-f": False,
+
+                #                         "format-lw": '''',
+
+                #                         "format-nrx": '''',
+
+                #                         "format-p": False,
+
+                #                         "format-pr": '''',
+
+                #                         "format-ps": ''circle'',
+
+                #                         "format-title": '''',
+
+                #                         "format-ua": '''',
+
+                #                     ],
+
+                #                     "series-groups": [
+
+                #                         "series-l": '''',
+
+                #                         "series-s": '''',
+
+                #                         "series-tab": 0,
+
+                #                         "series-type": ''Line'',
+
+                #                         "series-u": '''',
+
+                #                         "series-x": '''',
+
+                #                         "series-y": '''',
+
+                #                         "series-ymax": '''',
+
+                #                         "series-ymin": '''',
+
+                #                         "series-z": '''',
+
+                #                     ],
+
+                #                     "subtitle": '''',
+
+                #                     "title": '''',
+
+                #                     "xaxis-type": ''category'',
+
+                #                 },
+
+                #                 "loop-iterable": '''',
+
+                #                 "output": ''table'',
+
+                #                 "table": {
+
+                #                     "checkbox": False,
+
+                #                     "export": False,
+
+                #                     "filter": False,
+
+                #                     "footer": False,
+
+                #                     "multiselect-row": False,
+
+                #                     "pagesize": ''15'',
+
+                #                     "pagination": True,
+
+                #                     "search": False,
+
+                #                     "slate": '''',
+
+                #                     "sortable": True,
+
+                #                     "style": ''default'',
+
+                #                     "title": '''',
+
+                #                 },
+
+                #                 "tabs": [
+
+                #                     "content": ''select * from '' + table_name,
+
+                #                     "source": ''{ Clarama[''''Services''''][''''ClaramaSourceDB'''']
+                }'',
+
+                #                     "tab_id": 0,
+
+                #                 ],
+
+                #                 "type": ''data''
+
+                #             ]
+
+                #         ]
+
+                #     }
+
+                # }
+
+
+                # yaml_str = yaml.dump(task_data, sort_keys=False)
+
+                # file.put(f"{table_dir}/{table_name}.task.yaml", yaml_str)'
             loop-iterable: ''
             type: code
         -   content: '# create add new record btn'
