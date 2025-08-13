@@ -1,3 +1,6 @@
 Slates/Scheduling/Tasks/.Jobs
 .clarama
-/AI/Templates/dictionary/
+/AI/Templates/task_dictionary/fields
+/AI/Templates/task_dictionary/slates
+/AI/Templates/task_dictionary/tasks
+
