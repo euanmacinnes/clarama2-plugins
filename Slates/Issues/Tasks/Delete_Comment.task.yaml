@@ -1,19 +1,22 @@
 task:
-    environment: default
+    environment: native_shared.environment.yaml
     fieldgrid:
         children:
-        -   h: 4
-            id: element_0
-            w: 9
-            x: 1
+        -   id: element_0
+            w: 12
+            x: 0
             y: 0
         elements:
             element_0:
-                url: ./query.field.yaml
+                spacing: '1'
+                url: ./../Tables/comments fields/comment_id.field.yaml
         values:
-            query: ''
+            comment_id: ''
     streams:
     -   main:
+        -   content: ''
+            loop-iterable: ''
+            type: code
         -   chart:
                 advanced: ''
                 legend: 'Off'
@@ -68,13 +71,20 @@ task:
                 multiselect-row: false
                 pagesize: '15'
                 pagination: true
-                search: true
+                search: false
                 slate: ''
                 sortable: true
                 style: default
                 title: ''
             tabs:
-            -   content: show objects
-                source: /{parameters['original_url']}
+            -   content: 'delete from comments
+
+                    where comment_id = ''{parameters[''comment_id'']}'';
+
+                    commit;'
+                source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
+        -   content: print(parameters)
+            loop-iterable: ''
+            type: code

@@ -7,7 +7,7 @@ slate:
             x: 0
             y: 0
         -   h: null
-            id: element_1
+            id: element_5
             w: 3
             x: 4
             y: 0
@@ -21,26 +21,31 @@ slate:
             w: 4
             x: 0
             y: 1
-        -   h: 2
-            id: element_3
+        -   h: null
+            id: element_1
             w: 3
             x: 4
             y: 1
         -   h: 2
+            id: element_3
+            w: 3
+            x: 4
+            y: 2
+        -   h: 2
             id: element_7
             w: 3
             x: 4
-            y: 3
+            y: 4
         -   h: null
             id: element_2
             w: 3
             x: 4
-            y: 5
+            y: 6
         -   h: null
-            id: element_5
+            id: element_8
             w: 3
             x: 4
-            y: 6
+            y: 7
         elements:
             element_0:
                 url: ./Fields/Description.field.yaml
@@ -54,6 +59,11 @@ slate:
                     uid: '0'
                     url: ./Tasks/Add_Comments.task.yaml
                     wait: false
+                -   element: element_6
+                    params: ''
+                    uid: '1'
+                    url: ''
+                    wait: true
                 spacing: '1'
                 url: ./Fields/Add Comment.field.yaml
             element_3:
@@ -65,9 +75,33 @@ slate:
             element_5:
                 links: []
                 spacing: '1'
-                url: ./Tables/issues fields/issue_id.field.yaml
+                url: ./Fields/issue_id.field.yaml
             element_6:
+                links:
+                -   contextMenu: true
+                    element: modal
+                    menu_item_name: Edit
+                    params: ''
+                    uid: '0'
+                    url: ./Tasks/Edit_Comment.task.yaml
+                    wait: false
+                -   contextMenu: true
+                    element: hidden
+                    menu_item_name: Delete
+                    params: ''
+                    uid: '1'
+                    url: ./Tasks/Delete_Comment.task.yaml
+                    wait: false
                 url: ./Tasks/Comments.task.yaml
             element_7:
                 spacing: '5'
-                url: ./Tables/issues fields/assigned_to.field.yaml
+                url: ./Fields/assigned_to.field.yaml
+            element_8:
+                links:
+                -   element: modal
+                    params: ''
+                    uid: '0'
+                    url: ./Tasks/Edit_Issue.task.yaml
+                    wait: false
+                spacing: '1'
+                url: ./Fields/Edit btn.field.yaml

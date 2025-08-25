@@ -6,15 +6,15 @@ field:
       path: null
       query: null
     source: null
-  default: "{{ record['comment'] or row['comment'] or '' }}"
-  description: Reviewer's comment about the issue
+  default: "{{ record['assigned_by'] or row['assigned_by'] or ''}}"
+  description: Assigned priority on the issue
   maximum: ''
   minimum: ''
-  name: comment
+  name: assigned_by
   placeholder: ''
   readonly: false
   required: false
   spacing: '3'
   step: ''
-  type: richtext
+  type: string
 

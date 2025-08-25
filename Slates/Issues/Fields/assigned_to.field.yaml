@@ -1,0 +1,20 @@
+field:
+    data:
+        action: query
+        params:
+            query: "select username, username \nfrom user_entity as ue,\nuser_group_membership\
+                \ as gm,\nkeycloak_group as g\nwhere (g.name='{{ config['zone']}}'\
+                \ or g.name='zone-{{ config['zone']}}') \nAND ue.id = gm.user_id \
+                \ AND g.id = gm.group_id and [[username:search]] order\nby username\n"
+        source: /System/Data/Sources/keycloak_postgres.source.yaml
+    default: ''
+    description: The users assigned to the issue
+    maximum: ''
+    minimum: ''
+    name: Assigned To
+    placeholder: ''
+    readonly: false
+    required: false
+    spacing: '3'
+    step: ''
+    type: select

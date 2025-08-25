@@ -11,7 +11,7 @@ slate:
             w: 3
             x: 3
             y: 0
-        -   h: 5
+        -   h: 12
             id: element_0
             w: 6
             x: 0
@@ -34,4 +34,4 @@ slate:
                     url: ./table_field_generator.task.yaml
                     wait: true
                 spacing: '1'
-                url: ./table_field_generator.field.yaml
+                url: ./table_field_generator_btn.field.yaml

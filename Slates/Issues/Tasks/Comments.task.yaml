@@ -11,11 +11,12 @@ task:
     streams:
     -   main:
         -   content: "filters = []\n\nrun = False\nif 'issue_id' in parameters:\n\
-                \    issue_id = parameters['issue_id']\n    \n    if issue_id != \"\
-                \":\n        print(\"issue_id: \" + issue_id)\n        filters.append(f\"\
-                \"\"issue_id = '{issue_id}'\"\"\")\n        run = True\n\nfilter=\"\
-                \"\n\nif len(filters)>0:\n    filter = 'WHERE ' + ' AND '.join(filters)\n\
-                \nprint(\"Filter:\", filter)"
+                \    issue_id = parameters['issue_id']\n    \n    if 'record' in parameters:\n\
+                \        issue_id = parameters['record']['issue_id']\n    \n    if\
+                \ issue_id != \"\":\n        print(\"issue_id: \" + issue_id)\n  \
+                \      filters.append(f\"\"\"issue_id = '{issue_id}'\"\"\")\n    \
+                \    run = True\n\nfilter=\"\"\n\nif len(filters)>0:\n    filter =\
+                \ 'WHERE ' + ' AND '.join(filters)\n\nprint(\"Filter:\", filter)"
             loop-iterable: ''
             type: code
         -   chart:

@@ -6,19 +6,13 @@ field:
             path: null
             query: null
         source: null
-    default: "{{ record['issue_id'] or row['issue_id'] or ''}}"
+    default: Edit Issue
     description: ''
     maximum: ''
     minimum: ''
-    name: issue_id
+    name: ''
     placeholder: ''
-    readonly: true
-    required: false
     spacing: '3'
     step: ''
-    type: string
-
-
-
-
+    type: button
 

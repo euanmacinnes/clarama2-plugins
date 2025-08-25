@@ -1,40 +1,73 @@
 task:
-    environment: native_shared.environment.yaml
+    environment: default
     fieldgrid:
         children:
-        -   acceptWidgets: true
-            cellHeight: 65
-            h: 6
-            id: element_0
-            margin: 5
-            minRow: 1
-            removable: .trash
-            w: 12
+        -   id: element_0
+            w: 6
             x: 0
             y: 0
-        -   id: element_1
+        -   id: element_2
+            w: 6
+            x: 6
+            y: 0
+        -   id: element_9
+            w: 6
+            x: 0
+            y: 1
+        -   id: element_8
+            w: 6
+            x: 6
+            y: 1
+        -   h: 2
+            id: element_1
+            w: 6
+            x: 0
+            y: 2
+        -   h: 2
+            id: element_3
+            w: 6
+            x: 6
+            y: 2
+        -   h: 8
+            id: element_7
             w: 12
             x: 0
-            y: 6
+            y: 4
         elements:
             element_0:
-                url: ./../Tables/comments fields/comment.field.yaml
+                text: 'Path: '
             element_1:
+                spacing: '2'
+                url: ./../Fields/Status.field.yaml
+            element_2:
+                spacing: '3'
+                url: ./../Fields/issue_id.field.yaml
+            element_3:
+                url: ./../Fields/assigned_to.field.yaml
+            element_7:
                 spacing: '1'
-                url: ./../Tables/comments fields/issue_id.field.yaml
+                url: ./../Fields/Description.field.yaml
+            element_8:
+                url: ./../Fields/User Priority.field.yaml
+            element_9:
+                spacing: '2'
+                url: ./../Fields/Type.field.yaml
         values:
-            comment: ''
+            assigned_to: null
+            description: hi
             issue_id: ''
+            local_slates_issues_tasks_edit_issue_task_yaml_element_0: 'Path: '
+            status: Open
+            type: Issue
+            user_priority: Low
     streams:
     -   main:
-        -   content: "from datetime import datetime\nimport uuid\n\n# generate unique\
-                \ comment_id and get current timestamp\ncomment_id = str(uuid.uuid4())\n\
-                now = datetime.now().isoformat()\nreviewer = user['username']\n\n\
-                if 'comment' in parameters:\n    comment = parameters['comment'].strip().replace(\"\
-                '\", \"''\")  # escape single quotes\n\nif 'issue_id' in parameters:\n\
-                \    issue_id = parameters['issue_id']\n        \n    if issue_id\
-                \ != \"\":\n        print(\"parameters: \" + issue_id)\n        \n\
-                if 'record' in parameters:\n    issue_id = parameters['record']['issue_id']"
+        -   content: "from datetime import datetime\nimport uuid\n\nnow = datetime.now().isoformat()\n\
+                username = user['username']\n\nif 'issue_id' in parameters:\n    issue_id\
+                \ = parameters['issue_id']\n        \n    if issue_id != \"\":\n \
+                \       print(\"parameters: \" + issue_id)\n\nif 'description' in\
+                \ parameters:\n    desc = parameters['description'].strip().replace(\"\
+                '\", \"''\")  # escape single quotes"
             loop-iterable: ''
             type: code
         -   chart:
@@ -97,26 +130,15 @@ task:
                 style: default
                 title: ''
             tabs:
-            -   content: 'INSERT INTO comments (comment_id, issue_id, reviewer, comment,
-                    date_created)
+            -   content: 'UPDATE issues
 
-                    VALUES (''{comment_id}'', ''{issue_id}'', ''{reviewer}'', ''{comment}'',
-                    ''{ now }'');
+                    SET "type" = ''{parameters["type"]}'', user_priority = ''{parameters["user_priority"]}'',
+                    description = ''{desc}'', status = ''{parameters["status"]}'',
+                    date_updated = ''{now}''
+
+                    WHERE issue_id = ''{issue_id}'';
 
                     COMMIT;'
                 source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
-        -   content: '# print("comment_id", comment_id)
-
-                # print("now", now)
-
-                # print("reviewer", reviewer)
-
-                # print("comment", comment)
-
-                # print("user", user)
-
-                print("parameters", parameters)'
-            loop-iterable: ''
-            type: code

@@ -6,14 +6,16 @@ field:
       path: null
       query: null
     source: null
-  default: ''
+  default: "{{ record['comment_id'] or row['comment_id'] or ''}}"
   description: ''
   maximum: ''
   minimum: ''
   name: comment_id
   placeholder: ''
-  readonly: false
+  readonly: true
   required: false
   spacing: '3'
   step: ''
   type: string
+
+

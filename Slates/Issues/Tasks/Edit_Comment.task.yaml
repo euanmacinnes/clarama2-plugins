@@ -1,19 +1,46 @@
 task:
-    environment: default
+    environment: native_shared.environment.yaml
     fieldgrid:
         children:
+        -   id: element_2
+            w: 6
+            x: 0
+            y: 0
+        -   id: element_1
+            w: 6
+            x: 6
+            y: 0
         -   h: 4
             id: element_0
-            w: 9
-            x: 1
-            y: 0
+            w: 12
+            x: 0
+            y: 1
         elements:
             element_0:
-                url: ./query.field.yaml
+                url: ./../Tables/comments fields/comment.field.yaml
+            element_1:
+                spacing: '2'
+                url: ./../Tables/comments fields/issue_id.field.yaml
+            element_2:
+                spacing: '2'
+                url: ./../Tables/comments fields/comment_id.field.yaml
         values:
-            query: ''
+            comment: ''
+            comment_id: ''
+            issue_id: ''
     streams:
     -   main:
+        -   content: "from datetime import datetime\nimport uuid\n\nreviewer = user['username']\n\
+                \nif 'comment' in parameters:\n    comment = parameters['comment'].strip().replace(\"\
+                '\", \"''\")  # escape single quotes\n\nif 'comment_id' in parameters:\n\
+                \    comment_id = parameters['comment_id']\n        \n    if comment_id\
+                \ != \"\":\n        print(\"parameters: \" + comment_id)\n       \
+                \ \nif 'issue_id' in parameters:\n    issue_id = parameters['issue_id']\n\
+                \        \n    if issue_id != \"\":\n        print(\"parameters: \"\
+                \ + issue_id)\n        \nif 'record' in parameters:\n    issue_id\
+                \ = parameters['record']['issue_id']"
+            loop-iterable: ''
+            type: code
         -   chart:
                 advanced: ''
                 legend: 'Off'
@@ -68,13 +95,19 @@ task:
                 multiselect-row: false
                 pagesize: '15'
                 pagination: true
-                search: true
+                search: false
                 slate: ''
                 sortable: true
                 style: default
                 title: ''
             tabs:
-            -   content: show objects
-                source: /{parameters['original_url']}
+            -   content: 'UPDATE comments
+
+                    SET comment = ''{parameters["comment"]}'', reviewer = ''{reviewer}''
+
+                    WHERE comment_id = ''{comment_id}'' and issue_id = ''{issue_id}'';
+
+                    COMMIT;'
+                source: '{ Clarama[''Services''][''ClaramaSourceDB''] }'
                 tab_id: 0
             type: data
