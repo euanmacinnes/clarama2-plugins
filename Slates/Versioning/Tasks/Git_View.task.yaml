@@ -96,6 +96,3 @@ task:
                 source: /git/json/{git_action}/{git_path}{git_extra}
                 tab_id: 0
             type: data
-        -   content: ''
-            loop-iterable: ''
-            type: code

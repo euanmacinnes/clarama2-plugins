@@ -11,16 +11,16 @@ slate:
             w: 4
             x: 4
             y: 0
-        -   h: 3
+        -   h: null
             id: element_0
             w: 12
             x: 0
             y: 1
-        -   h: 19
+        -   h: 14
             id: element_1
             w: 12
             x: 0
-            y: 4
+            y: 2
         elements:
             element_0:
                 text: <h3>Versioning for {basename(original_url)}</h3>
@@ -28,6 +28,12 @@ slate:
                 refresh: true
                 url: ./Versioning/Tasks/Git_View.task.yaml
             element_2:
+                links:
+                -   element: element_1
+                    params: ''
+                    uid: '0'
+                    url: ''
+                    wait: false
                 url: ./Versioning/Fields/git_action.field.yaml
             element_3:
                 url: ./Versioning/Fields/git_max.field.yaml
