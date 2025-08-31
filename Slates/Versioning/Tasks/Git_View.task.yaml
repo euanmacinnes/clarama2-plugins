@@ -1,0 +1,100 @@
+task:
+    environment: default
+    fieldgrid:
+        children:
+        -   h: 4
+            id: element_0
+            w: 6
+            x: 0
+            y: 0
+        -   h: 4
+            id: element_1
+            w: 6
+            x: 6
+            y: 0
+        elements:
+            element_0:
+                url: ./../Fields/git_action.field.yaml
+            element_1:
+                url: ./../Fields/git_max.field.yaml
+        values:
+            git_action: status
+            git_max: '20'
+    streams:
+    -   main:
+        -   content: "import os\n\n# Build a filesystem path from the original_url\
+                \ (content-relative)\ngit_path = parameters.get('original_url', '').lstrip('/')\n\
+                \n# Expose template variables\ngit_action = parameters.get('git_action',\
+                \ 'status').strip()\nmax_count = int(parameters.get('git_max', 20)\
+                \ or 20)\n\n# Build query string additions depending on action\ngit_extra\
+                \ = ''\nif git_action == 'log' and max_count:\n    git_extra = f\"\
+                &max={max_count}\""
+            loop-iterable: ''
+            type: code
+        -   chart:
+                advanced: ''
+                legend: 'Off'
+                series-annos:
+                -   anno-col: ''
+                    anno-col-back: ''
+                    anno-dt: false
+                    anno-i: ''
+                    anno-label: ''
+                    anno-s: ''
+                    anno-tab: 0
+                    anno-type: box
+                    anno-u: ''
+                    anno-width: ''
+                    anno-x: ''
+                    anno-xm: ''
+                    anno-y: ''
+                    anno-ym: ''
+                series-formats:
+                -   format-col: ''
+                    format-col-back: ''
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                    format-ps: circle
+                    format-title: ''
+                    format-ua: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-tab: 0
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+                xaxis-type: category
+            loop-iterable: ''
+            output: code
+            table:
+                checkbox: false
+                export: false
+                filter: false
+                footer: false
+                multiselect-row: false
+                pagesize: '15'
+                pagination: true
+                search: true
+                slate: ''
+                sortable: true
+                style: default
+                title: Git {git_action} for {basename(original_url)}
+            tabs:
+            -   content: ''
+                source: /web/version/git/view/json/{git_action}?path={git_path}{git_extra}
+                tab_id: 0
+            type: data
+        -   content: ''
+            loop-iterable: ''
+            type: code

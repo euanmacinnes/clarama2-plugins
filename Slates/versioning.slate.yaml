@@ -1,2 +1,33 @@
-!!set
-slate: null
+slate:
+    grid:
+        children:
+        -   h: null
+            id: element_2
+            w: 4
+            x: 0
+            y: 0
+        -   h: null
+            id: element_3
+            w: 4
+            x: 4
+            y: 0
+        -   h: 3
+            id: element_0
+            w: 12
+            x: 0
+            y: 1
+        -   h: 19
+            id: element_1
+            w: 12
+            x: 0
+            y: 4
+        elements:
+            element_0:
+                text: <h3>Versioning for {basename(original_url)}</h3>
+            element_1:
+                refresh: true
+                url: ./Versioning/Tasks/Git_View.task.yaml
+            element_2:
+                url: ./Versioning/Fields/git_action.field.yaml
+            element_3:
+                url: ./Versioning/Fields/git_max.field.yaml
