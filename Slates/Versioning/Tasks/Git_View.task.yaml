@@ -28,7 +28,8 @@ task:
                 \ 'status').strip()\nmax_count = int(parameters.get('git_max', 20)\
                 \ or 20)\n\n# Build query string additions depending on action\ngit_extra\
                 \ = ''\nif git_action == 'log' and max_count:\n    git_extra = f\"\
-                &max={max_count}\""
+                ?max={max_count}\"\n    \noriginal_url=parameters.get(\"original_url\"\
+                )"
             loop-iterable: ''
             type: code
         -   chart:
@@ -76,7 +77,7 @@ task:
                 title: ''
                 xaxis-type: category
             loop-iterable: ''
-            output: code
+            output: table
             table:
                 checkbox: false
                 export: false
@@ -89,10 +90,10 @@ task:
                 slate: ''
                 sortable: true
                 style: default
-                title: Git {git_action} for {basename(original_url)}
+                title: Git {git_action} for {original_url}
             tabs:
             -   content: ''
-                source: /web/version/git/view/json/{git_action}?path={git_path}{git_extra}
+                source: /git/json/{git_action}/{git_path}{git_extra}
                 tab_id: 0
             type: data
         -   content: ''
