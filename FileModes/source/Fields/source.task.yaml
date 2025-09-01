@@ -72,7 +72,7 @@ task:
                 slate: ''
                 sortable: true
                 style: default
-                title: ''
+                title: '{parameters[''original_url'']}'
             tabs:
             -   content: show objects
                 source: /{parameters['original_url']}
