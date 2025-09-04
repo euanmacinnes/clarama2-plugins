@@ -181,9 +181,12 @@ class MultiGenieMachine(GenieStateMachine):
     def bots_found(self, event_data: EventData):
         try:
             print("EVENT DATA:", str(event_data))
+            print("EVENT DATA ARGS:", str(event_data.args[0]))
             response = json.loads(event_data.args[0])
         except Exception:
             return False
+
+        print("EVENT BOTS: ", str(self.model.bots.keys()))
 
         for bot_name, bot_value in response.items():
             if bot_name in self.model.bots.keys() and bot_value and bot_value["question"]:
