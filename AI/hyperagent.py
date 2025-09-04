@@ -180,6 +180,7 @@ class MultiGenieMachine(GenieStateMachine):
 
     def bots_found(self, event_data: EventData):
         try:
+            print("EVENT DATA:", str(event_data))
             response = json.loads(event_data.args[0])
         except Exception:
             return False
