@@ -1,5 +1,1 @@
-invoker:
-  type: genie_flow_invoker.invoker.ollama.OllamaChatInvoker
-  ollama_url: 192.168.0.250:11434
-  model: gemma3:4b
-  format: json
+renderer:
