@@ -104,7 +104,7 @@ class MultiGenieMachine(GenieStateMachine):
         intro="response/intro.jinja2",  # Response is the "statically rendered content"
         ai_decides_path="hyperagent/choose_bot.jinja2",
         user_views_rephrasing="response/user_views_rephrasing.jinja2",
-        user_views_no_bots_found="hyperagent/no_bots.jinja2",
+        user_views_no_bots_found="response/no_bots.jinja2",
         ai_creates_answer=[
             MapTaskTemplate(
                 "llm_answer/ai_answers_question.jinja2",
