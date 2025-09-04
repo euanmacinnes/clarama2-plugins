@@ -34,7 +34,7 @@ class MultiGenieModel(GenieModel):
     original_question: str = Field("", description="Original question asked")
     bots: dict[str, str] = Field(
         default={
-            "Task Dictionary": "task_dictionary/task_bot.jinja2",
+            "Task Bot": "task_dictionary/task_bot.jinja2",
         },
         description="dictionary mapping bot names to their descriptive templates",
     )
