@@ -1,0 +1,7 @@
+field:
+  name: Max Entries
+  description:
+    Maximum number of log entries to retrieve (applies to 'log' action)
+  type: number
+  required: false
+  default: 20

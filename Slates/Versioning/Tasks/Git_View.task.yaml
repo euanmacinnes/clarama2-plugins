@@ -4,16 +4,34 @@ task:
         children:
         -   h: 4
             id: element_0
-            w: 9
-            x: 1
+            w: 6
+            x: 0
+            y: 0
+        -   h: 4
+            id: element_1
+            w: 6
+            x: 6
             y: 0
         elements:
             element_0:
-                url: ./query.field.yaml
+                url: ./../Fields/git_action.field.yaml
+            element_1:
+                url: ./../Fields/git_max.field.yaml
         values:
-            query: ''
+            git_action: status
+            git_max: '20'
     streams:
     -   main:
+        -   content: "import os\n\n# Build a filesystem path from the original_url\
+                \ (content-relative)\ngit_path = parameters.get('original_url', '').lstrip('/')\n\
+                \n# Expose template variables\ngit_action = parameters.get('git_action',\
+                \ 'status').strip()\nmax_count = int(parameters.get('git_max', 20)\
+                \ or 20)\n\n# Build query string additions depending on action\ngit_extra\
+                \ = ''\nif git_action == 'log' and max_count:\n    git_extra = f\"\
+                ?max={max_count}\"\n    \noriginal_url=parameters.get(\"original_url\"\
+                )"
+            loop-iterable: ''
+            type: code
         -   chart:
                 advanced: ''
                 legend: 'Off'
@@ -72,9 +90,9 @@ task:
                 slate: ''
                 sortable: true
                 style: default
-                title: '{parameters[''original_url'']}'
+                title: Git {git_action} for {original_url}
             tabs:
-            -   content: show objects
-                source: /{parameters['original_url']}
+            -   content: ''
+                source: /git/json/{git_action}/{git_path}{git_extra}
                 tab_id: 0
             type: data

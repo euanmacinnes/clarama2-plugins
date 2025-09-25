@@ -1,0 +1,13 @@
+field:
+  name: Git Action
+  description:
+    Select the Git action to perform for the target path
+  type: select
+  required: true
+  default: status
+  data:
+      options:
+        - status
+        - log
+        - diff
+        - branches

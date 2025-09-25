@@ -18,8 +18,10 @@ task:
                 \ = parameters.get('row', {}).get(\"Type\",None)\n\nif ob_name is\
                 \ not None:\n    alert(\"Object\")\n    if ob_type in ['Table','View']:\n\
                 \        query = f\"\"\"select * from \"{ob_name}\" \"\"\"\n     \
-                \   print(\"ob_type!\")\n        \n    if ob_type in ['Bucket']:\n\
-                \        query = f\"\"\"from(bucket: \"{ob_name}\")\n  |> range(start:\
+                \   print(\"ob_type!\")\n        \n    if ob_type in ['Schema']:\n\
+                \        query = f\"\"\"describe {ob_name} \"\"\"\n        print(\"\
+                Schema!\")        \n        \n    if ob_type in ['Bucket']:\n    \
+                \    query = f\"\"\"from(bucket: \"{ob_name}\")\n  |> range(start:\
                 \ -30d)\n  |> aggregateWindow(every: 2h, fn: mean, createEmpty: false)\n\
                 \  |> yield(name: \"mean\")\"\"\"\nelse:\n    alert(f\"Query\")\n\
                 \    query = parameters.get('query', None)\n    if query == '':\n\
@@ -28,14 +30,16 @@ task:
             loop-iterable: ''
             type: code
         -   chart:
+                advanced: ''
                 legend: 'Off'
                 series-annos:
                 -   anno-col: ''
                     anno-col-back: ''
                     anno-dt: false
+                    anno-i: ''
                     anno-label: ''
                     anno-s: ''
-                    anno-tab: '0'
+                    anno-tab: 0
                     anno-type: box
                     anno-u: ''
                     anno-width: ''
@@ -58,7 +62,7 @@ task:
                 series-groups:
                 -   series-l: ''
                     series-s: ''
-                    series-tab: '0'
+                    series-tab: 0
                     series-type: Line
                     series-u: ''
                     series-x: ''
@@ -80,6 +84,7 @@ task:
                 pagesize: '15'
                 pagination: true
                 search: false
+                slate: ''
                 sortable: true
                 style: default
                 title: ''
