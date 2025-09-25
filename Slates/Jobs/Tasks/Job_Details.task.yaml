@@ -1,5 +1,5 @@
 task:
-    environment: default
+    environment: native_individual.environment.yaml
     fieldgrid:
         children:
         -   id: element_0
@@ -30,14 +30,16 @@ task:
             loop-iterable: ''
             type: code
         -   chart:
+                advanced: ''
                 legend: 'Off'
                 series-annos:
                 -   anno-col: ''
                     anno-col-back: ''
                     anno-dt: false
+                    anno-i: ''
                     anno-label: ''
                     anno-s: ''
-                    anno-tab: '0'
+                    anno-tab: 0
                     anno-type: box
                     anno-u: ''
                     anno-width: ''
@@ -60,7 +62,7 @@ task:
                 series-groups:
                 -   series-l: ''
                     series-s: ''
-                    series-tab: '0'
+                    series-tab: 0
                     series-type: Line
                     series-u: ''
                     series-x: ''
@@ -71,6 +73,42 @@ task:
                 subtitle: ''
                 title: ''
                 xaxis-type: category
+            chart3d:
+                advanced: ''
+                axis:
+                    graph_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    orig_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    titles:
+                        x: ''
+                        y: ''
+                        z: ''
+                legend: 'Off'
+                series-objects:
+                -   obj-colour: ''
+                    obj-edges: ''
+                    obj-primitive: point
+                    obj-texture: ''
+                    obj-uv: ''
+                    obj-vertices: 0
+                title: ''
             loop-iterable: ''
             output: table
             table:
@@ -82,6 +120,7 @@ task:
                 pagesize: '15'
                 pagination: true
                 search: true
+                slate: ''
                 sortable: true
                 style: default
                 title: ''
