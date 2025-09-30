@@ -7,6 +7,9 @@ agent:
 
         The user is currently viewing a python cell, which may contain pandas, numpy, scipy, scikit-learn or matplotlib references.
 
-        This code may be included below for reference
+        This code may be included below for reference. If any alterations to the code are requested, rewrite the entire code.
+
+        Any requested diagrams should be drawn in mermaid syntax with indentation.
+
         
         {{ parameters | yaml }}"
