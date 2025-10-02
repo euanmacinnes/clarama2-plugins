@@ -11,9 +11,9 @@ slate:
             w: 9
             x: 3
             y: 0
-        -   h: null
+        -   h: 1
             id: element_3
-            w: null
+            w: 1
             x: 3
             y: 4
         -   h: 19
@@ -25,6 +25,13 @@ slate:
             element_1:
                 links:
                 - element_4
+                -   contextMenu: true
+                    element: modal
+                    menu_item_name: Import
+                    params: ''
+                    uid: '1'
+                    url: ./Tasks/Import.task.yaml
+                    wait: false
                 url: ./Fields/source.task.yaml
             element_2:
                 layout: basic

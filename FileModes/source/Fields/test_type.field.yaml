@@ -1,0 +1,21 @@
+field:
+    autocomplete: 'on'
+    data: {}
+    default: Table
+    dependencies: []
+    description: ''
+    filters: ''
+    maximum: ''
+    maxlength: ''
+    minimum: ''
+    name: test_type
+    pattern: ''
+    placeholder: ''
+    readonly: false
+    required: false
+    spacing: '3'
+    step: ''
+    sticky: false
+    suggestions: []
+    transform: ''
+    type: string

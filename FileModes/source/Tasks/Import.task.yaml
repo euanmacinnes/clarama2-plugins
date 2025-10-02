@@ -1,0 +1,151 @@
+task:
+    environment: native.environment.yaml
+    fieldgrid:
+        children:
+        -   h: 1
+            id: element_2
+            w: 4
+            x: 0
+            y: 0
+        -   h: 1
+            id: element_1
+            w: 4
+            x: 0
+            y: 1
+        -   h: 1
+            id: element_0
+            w: 4
+            x: 0
+            y: 2
+        elements:
+            element_0:
+                url: ./../Fields/original_url.field.yaml
+            element_1:
+                url: ./../Fields/test_table.field.yaml
+            element_2:
+                url: ./../Fields/test_type.field.yaml
+        values:
+            original_url: /System/Data/Sources/clarama instance postgres.source.yaml
+            test_table: jobs
+            test_type: Table
+    streams:
+    -   main:
+        -   content: "ob_name = parameters.get('row', {}).get(\"Object\",parameters['test_table'])\n\
+                ob_type = parameters.get('row', {}).get(\"Type\",parameters['test_type'])\n\
+                \nexecute_loop=False\n\nif ob_name is not None:\n    alert(\"Object\"\
+                )\n    if ob_type in ['Table']:\n        execute_loop = True\n   \
+                \     sourcefile = parameters['original_url']\n        print(f\"Importing\
+                \ {ob_name}\")"
+            loop-iterable: ''
+            type: code
+        -   chart:
+                advanced: ''
+                legend: 'Off'
+                series-annos:
+                -   anno-col: ''
+                    anno-col-back: ''
+                    anno-dt: false
+                    anno-i: ''
+                    anno-label: ''
+                    anno-s: ''
+                    anno-tab: 0
+                    anno-type: box
+                    anno-u: ''
+                    anno-width: ''
+                    anno-x: ''
+                    anno-xm: ''
+                    anno-y: ''
+                    anno-ym: ''
+                series-formats:
+                -   format-col: ''
+                    format-col-back: ''
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                    format-ps: circle
+                    format-title: ''
+                    format-ua: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-tab: 0
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+                xaxis-type: category
+            chart3d:
+                advanced: ''
+                axis:
+                    graph_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    orig_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    titles:
+                        x: ''
+                        y: ''
+                        z: ''
+                legend: 'Off'
+                series-objects:
+                -   obj-colour: ''
+                    obj-edges: ''
+                    obj-primitive: point
+                    obj-texture: ''
+                    obj-uv: ''
+                    obj-vertices: 0
+                    transform-matrix: ''
+                title: ''
+            loop-iterable: execute_loop
+            output: table
+            table:
+                checkbox: false
+                export: false
+                filter: false
+                footer: false
+                multiselect-row: false
+                pagesize: '15'
+                pagination: true
+                search: false
+                slate: ''
+                sortable: true
+                style: default
+                title: ''
+            tabs:
+            -   content: describe {ob_name}
+                source: '{sourcefile}'
+                tab_id: 0
+            type: data
+        -   content: "import os\n\ntable_def = None\ntable_def_res = execute(\"import_table/\"\
+                \ + sourcefile.lstrip('/'),table=ob_name,source=\"../\" + os.path.basename(sourcefile))\n\
+                \nif table_def_res['data'] == 'ok':\n    table_def = table_def_res['results']"
+            loop-iterable: execute_loop
+            type: code
+        -   content: "table_path = os.path.dirname(sourcefile) + '/Tables'\n\nif table_def:\n\
+                \    folder.create(table_path)\n    res = file.put(table_path + \"\
+                /\" + ob_name + \".table.yaml\", table_def)\n    print(res)"
+            loop-iterable: execute_loop
+            type: code

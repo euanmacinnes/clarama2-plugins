@@ -1,0 +1,21 @@
+field:
+    autocomplete: 'on'
+    data: {}
+    default: /System/Data/Sources/clarama instance postgres.source.yaml
+    dependencies: []
+    description: ''
+    filters: ''
+    maximum: ''
+    maxlength: ''
+    minimum: ''
+    name: original_url
+    pattern: ''
+    placeholder: ''
+    readonly: false
+    required: false
+    spacing: '3'
+    step: ''
+    sticky: false
+    suggestions: []
+    transform: ''
+    type: string
