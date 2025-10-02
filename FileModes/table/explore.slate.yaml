@@ -1,9 +1,9 @@
 slate:
     grid:
         children:
-        -   h: 1
+        -   h: 12
             id: element_0
-            w: 4
+            w: 12
             x: 0
             y: 0
         elements:

@@ -1,7 +1,7 @@
 field:
     autocomplete: 'on'
     data: {}
-    default: Table
+    default: '{{ row["Type"] }}'
     dependencies: []
     description: ''
     filters: ''
@@ -19,3 +19,4 @@ field:
     suggestions: []
     transform: ''
     type: string
+

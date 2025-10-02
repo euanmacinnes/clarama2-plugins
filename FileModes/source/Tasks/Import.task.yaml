@@ -145,7 +145,9 @@ task:
             loop-iterable: execute_loop
             type: code
         -   content: "table_path = os.path.dirname(sourcefile) + '/Tables'\n\nif table_def:\n\
-                \    folder.create(table_path)\n    res = file.put(table_path + \"\
-                /\" + ob_name + \".table.yaml\", table_def)\n    print(res)"
+                \    folder.create(table_path)\n    table_file = table_path + \"/\"\
+                \ + ob_name + \".table.yaml\"\n    res = file.put(table_file, table_def)\n\
+                \    print(\"Created import table for \", ob_name, \" saved to \"\
+                , table_file)"
             loop-iterable: execute_loop
             type: code
