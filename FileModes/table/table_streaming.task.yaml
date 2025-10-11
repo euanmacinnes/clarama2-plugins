@@ -1,2 +1,116 @@
 task:
-    name: table_streaming
+    environment: native.environment.yaml
+    fieldgrid:
+        children: []
+        elements: {}
+        values: {}
+    streams:
+    -   main:
+        -   content: 'table_file = parameters.get(''original_url'',''/System/Data/jobs.table.yaml'')
+
+                table_yaml = file.get(table_file)
+
+                table_source = table_yaml[''table''][''source'']
+
+                table_name = table_yaml[''table''][''name'']'
+            loop-iterable: ''
+            type: code
+        -   chart:
+                advanced: ''
+                legend: 'Off'
+                series-annos:
+                -   anno-col: ''
+                    anno-col-back: ''
+                    anno-dt: false
+                    anno-i: ''
+                    anno-label: ''
+                    anno-s: ''
+                    anno-tab: 0
+                    anno-type: box
+                    anno-u: ''
+                    anno-width: ''
+                    anno-x: ''
+                    anno-xm: ''
+                    anno-y: ''
+                    anno-ym: ''
+                series-formats:
+                -   format-col: ''
+                    format-col-back: ''
+                    format-dt: false
+                    format-f: false
+                    format-lw: ''
+                    format-nrx: ''
+                    format-p: false
+                    format-pr: ''
+                    format-ps: circle
+                    format-title: ''
+                    format-ua: ''
+                series-groups:
+                -   series-l: ''
+                    series-s: ''
+                    series-tab: 0
+                    series-type: Line
+                    series-u: ''
+                    series-x: ''
+                    series-y: ''
+                    series-ymax: ''
+                    series-ymin: ''
+                    series-z: ''
+                subtitle: ''
+                title: ''
+                xaxis-type: linear
+            chart3d:
+                advanced: ''
+                axis:
+                    graph_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    orig_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    tickSizeX: null
+                    tickSizeY: null
+                    tickSizeZ: null
+                    ticks:
+                        x:
+                            step: null
+                        y:
+                            step: null
+                        z:
+                            step: null
+                    titles: {}
+                series-objects: []
+            loop-iterable: ''
+            output: table
+            table:
+                checkbox: false
+                export: false
+                filter: false
+                footer: false
+                multiselect-row: false
+                pagesize: '15'
+                pagination: true
+                search: false
+                slate: ''
+                sortable: true
+                style: default
+                title: ''
+            tabs:
+            -   content: select * from [[table_name]]
+                source: '[[table_source]]'
+                tab_id: 0
+            type: data_stream
