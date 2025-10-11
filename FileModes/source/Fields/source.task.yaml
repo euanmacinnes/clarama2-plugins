@@ -57,7 +57,42 @@ task:
                     series-z: ''
                 subtitle: ''
                 title: ''
-                xaxis-type: category
+                xaxis-type: linear
+            chart3d:
+                advanced: ''
+                axis:
+                    graph_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    orig_bounds:
+                        x:
+                        - null
+                        - null
+                        y:
+                        - null
+                        - null
+                        z:
+                        - null
+                        - null
+                    tickSizeX: null
+                    tickSizeY: null
+                    tickSizeZ: null
+                    ticks:
+                        x:
+                            step: null
+                        y:
+                            step: null
+                        z:
+                            step: null
+                    titles: {}
+                series-objects: []
             loop-iterable: ''
             output: table
             table:
@@ -77,4 +112,4 @@ task:
             -   content: show objects
                 source: /{parameters['original_url']}
                 tab_id: 0
-            type: data
+            type: data_stream
