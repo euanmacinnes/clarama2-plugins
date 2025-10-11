@@ -6,13 +6,15 @@ task:
         values: {}
     streams:
     -   main:
-        -   content: 'table_file = parameters.get(''original_url'',''/System/Data/jobs.table.yaml'')
+        -   content: 'table_file = parameters.get(''original_url'',''/System/Data/Sources/Tables/jobs.table.yaml'')
 
                 table_yaml = file.get(table_file)
 
                 table_source = table_yaml[''table''][''source'']
 
-                table_name = table_yaml[''table''][''name'']'
+                table_name = table_yaml[''table''][''name'']
+
+                relative_source = path.relative(table_source, table_file)'
             loop-iterable: ''
             type: code
         -   chart:
@@ -111,6 +113,6 @@ task:
                 title: ''
             tabs:
             -   content: select * from [[table_name]]
-                source: '[[table_source]]'
+                source: /[[relative_source]]
                 tab_id: 0
             type: data_stream
