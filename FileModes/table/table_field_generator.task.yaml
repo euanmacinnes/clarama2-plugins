@@ -6,90 +6,84 @@ task:
         values: {}
     streams:
     -   main:
-        -   content: '# How it works currently
-
-                # 1. User is in edit mode in a Data Table file
-
-                # 2. User clicks on Generate Field Button, this task file (table_field_generator.task.yaml)
-                will run
-
-                # 3. The table_field_generator.task.yaml will do the following
-
-                #     1. Create a folder {table_name} fields in the same directory
-                as the Data Table file if it doesnt exist
-
-                #     2. Generate all the fields according to the table''s column
-                and store them in the folder ({table_name} fields)
-
-                #         - TODO: but currently it doesnt work for foreign key and
-                default value
-
-                #     3. Create {table_dir}/{table_name} template folder if it doesn''t
-                exist to store the template''s fields, tasks, and slates
-
-                #     4. Create add new record btn (.field.yaml) if it doesnt exist
-
-                #         - to be used in the table slate
-
-                #     5. Create table row view (.slate.yaml) if it doesnt exist
-
-                #     6. Create a task to view table records (.task.yaml) if it doesnt
-                exist
-
-                #         - this will reference the slate table row view created
-
-                #         - to be used in the table slate
-
-                #     7. create slate for table
-
-                #         - TODO: yet to implement:
-
-                #             - task to add a new record
-
-                #             - interaction to enable right click (context menu) on
-                record to edit n dlt it
-
-
-                # -> to test: u can use the dummy table in https://c2.dev.dis.corpnet1.com/content/explore/Help/Samples/Slate%20Interactions/Slate%20Interaction%20Types/Dummy%20Data'
+        -   content: "# How it works currently\n# 1. User is in edit mode in a Data\
+                \ Table file\n# 2. User clicks on Generate Field Button, this task\
+                \ file (table_field_generator.task.yaml) will run\n# 3. The table_field_generator.task.yaml\
+                \ will do the following\n#     1. Create a folder {table_name} fields\
+                \ in the same directory as the Data Table file if it doesnt exist\n\
+                #     2. Generate all the fields according to the table's column and\
+                \ store them in the folder ({table_name} fields)\n#         - TODO:\
+                \ but currently it doesnt work for foreign key and default value\n\
+                #     3. Create {table_dir}/{table_name} template folder if it doesn't\
+                \ exist to store the template's fields, tasks, and slates\n#     4.\
+                \ Create add new record btn (.field.yaml) if it doesnt exist\n#  \
+                \       - to be used in the table slate\n#     5. Create table row\
+                \ view (.slate.yaml) if it doesnt exist\n#     6. Create a task to\
+                \ view table records (.task.yaml) if it doesnt exist\n#         -\
+                \ this will reference the slate table row view created\n#        \
+                \ - to be used in the table slate\n#     7. create slate for table\n\
+                #         - TODO: yet to implement:\n#             - task to add a\
+                \ new record\n#             - interaction to enable right click (context\
+                \ menu) on record to edit n dlt it\n\n# -> to test: u can use the\
+                \ dummy table in https://c2.dev.dis.corpnet1.com/content/explore/Help/Samples/Slate%20Interactions/Slate%20Interaction%20Types/Dummy%20Data\n\
+                \nfield_map = {'Boolean': 'checkbox',\n    'Date': 'date',\n    'DateTime':\
+                \ 'datetime', \n    'Double': 'number',\n    'Float': 'number',\n\
+                \    'Integer': 'number',\n    'Numeric': 'number',\n    'SmallInteger':\
+                \ 'number',\n    'String': 'string',\n    'Uuid': 'string',\n    'LongString':\
+                \ 'textarea',\n    'Unicode': 'textarea',\n    'UnicodeText': 'textarea'\n\
+                }"
             loop-iterable: ''
             type: code
-        -   content: "import yaml\nimport os\n \nif 'original_url' in parameters:\n\
-                \    table_path = parameters['original_url']\n    # print(\"original_url\"\
-                \ + table_path)\n    table_dir = os.path.dirname(table_path)\n   \
-                \ # print(\"table_dir \" + table_dir)\n    if (file.exists(table_path)):\n\
+        -   content: "import yaml\nimport os\n\nif not 'original_url' in parameters:\n\
+                \    parameters['original_url'] = 'Applications/Asset Intelligence/1\
+                \ Configuration/Infrastructure Equipment.table.yaml'\n\nif 'original_url'\
+                \ in parameters:\n    table_path = parameters['original_url']\n  \
+                \  # print(\"original_url\" + table_path)\n    table_dir = os.path.dirname(table_path)\n\
+                \    print(\"Generating fields for table \" + table_path)\n    \n\
+                \    # print(\"table_dir \" + table_dir)\n    if (file.exists(table_path)):\n\
                 \        content = file.download(table_path)\n        # print(content)\n\
                 \        table_content = yaml.safe_load(content)\n        # print(table_content)\n\
                 \        # print(type(table_content))\n        table_name = table_content['table']['name'].lower()\n\
                 \        table_columns = table_content['table']['columns']\n     \
-                \   # print(table_name)\n        # print(table_columns)\n        if\
-                \ (folder.get(f\"{table_dir}/{table_name} fields\")['exists']):\n\
-                \            print(\"fields have been generated before\")\n      \
-                \  else:\n            folder.create(f\"{table_dir}/{table_name} fields\"\
-                )\n            # folder.create(f\"./{table_name} fields\")\n     \
-                \       for col in table_columns:\n                if \"doc\" in col:\n\
-                \                    desc = col['doc']\n                else:\n  \
-                \                  desc = ''\n                # print(f\"name: {col['name']},\
-                \ type: {col['type']}, doc: {desc}\")\n                readonly =\
-                \ False\n                if col['name'] == 'date_created' or 'id'\
-                \ in col['name'].lower():\n                    readonly = True\n \
-                \               data = {\n                    \"field\": {\n     \
-                \                   \"data\": {\n                            \"action\"\
-                : None,\n                            \"options\": None,\n        \
-                \                    \"params\": {\n                             \
-                \   \"path\": None,\n                                \"query\": None\n\
-                \                            },\n                            \"source\"\
-                : None\n                        },\n                        \"default\"\
-                : \"\",\n                        \"description\": desc,\n        \
-                \                \"maximum\": '',\n                        \"minimum\"\
-                : '',\n                        \"name\": col['name'],\n          \
-                \              \"placeholder\": '',\n                        \"readonly\"\
-                : readonly,\n                        \"required\": False,\n      \
-                \                  \"spacing\": '3',\n                        \"step\"\
-                : '',\n                        \"type\": col['type'].lower()\n   \
-                \                 }\n                }\n                # print(data)\n\
-                \                yaml_str = yaml.dump(data, default_style='\"', sort_keys=False)\n\
-                \                file.put(f\"{table_dir}/{table_name} fields/{col['name']}.field.yaml\"\
-                , yaml_str)\n                print(\"fields generated\")"
+                \   # print(table_name)\n        # print(table_columns)\n        folder.create(f\"\
+                {table_dir}/{table_name} fields\")\n        # folder.create(f\"./{table_name}\
+                \ fields\")\n        for col in table_columns:\n            if \"\
+                doc\" in col:\n                desc = col['doc']\n            else:\n\
+                \                desc = ''\n            # print(f\"name: {col['name']},\
+                \ type: {col['type']}, doc: {desc}\")\n            readonly = False\n\
+                \            if col['name'] == 'date_created' or 'id' in col['name'].lower():\n\
+                \                readonly = True\n                \n            col_type\
+                \ = col['type']\n            \n            if col_type == 'String':\n\
+                \                if 'type-info' in col:\n                    if col['type-info']['length']>255:\n\
+                \                        col_type = 'LongString'\n               \
+                \ \n            resultant_type = field_map.get(col_type, 'string')\n\
+                \            \n            source = None\n            query = None\n\
+                \            action = None\n            \n            if 'lookup'\
+                \ in col:\n                col_type = 'select'\n                action\
+                \ = 'query'\n                source = col['lookup']['table']\n   \
+                \             query = \"select id, display_name from [[table]]\"\n\
+                \                \n            data = {\n                \"field\"\
+                : {\n                    \"data\": {\n                        \"action\"\
+                : \"query\",\n                        \"options\": None,\n       \
+                \                 \"params\": {\n                            \"path\"\
+                : None,\n                            \"query\": query\n          \
+                \              },\n                        \"source\": source\n  \
+                \                  },\n                    \"default\": \"\",\n  \
+                \                  \"description\": desc,\n                    \"\
+                maximum\": '',\n                    \"minimum\": '',\n           \
+                \         \"name\": col['name'],\n                    \"placeholder\"\
+                : '',\n                    \"readonly\": readonly,\n             \
+                \       \"required\": False,\n                    \"spacing\": '3',\n\
+                \                    \"step\": '',\n                    \"type\":\
+                \ resultant_type\n                }\n            }\n            #\
+                \ print(data)\n            yaml_str = yaml.dump(data, sort_keys=False)\n\
+                \            filename = f\"{table_dir}/{table_name} fields/{col['name']}.field.yaml\"\
+                \n            \n            # if file.exists(filename):\n        \
+                \    # print(filename + ' exists, skipped')\n            # else:\n\
+                \            print('field saved to ' + filename)\n            file.put(filename,\
+                \ yaml_str)\n        print(\"fields generated\")\n    else:\n    \
+                \    print(f\"Skipped, {table_path} doesn't exist\")\nelse:\n    print(\"\
+                Skipped, no original_url\")"
             loop-iterable: ''
             type: code
         -   content: "if (folder.get(f\"{table_dir}/{table_name} template\")['exists']):\n\
@@ -125,22 +119,21 @@ task:
                 \        \n        children.append({\n            \"h\": h,\n    \
                 \        \"id\": element_id,\n            \"w\": w,\n            \"\
                 x\": x,\n            \"y\": y\n        })\n        \n        elements[element_id]\
-                \ = {\n            \"spacing\": \"2\",\n            \"url\": f\"../dummy\
-                \ fields/{file_info['name']}\"\n        }\n        \n    row_slate_data\
-                \ = {\n        \"slate\": {\n            \"grid\": {\n           \
-                \     \"children\": children,\n                \"elements\": elements\n\
-                \            }\n        }\n    }\n    \n    yaml_str = yaml.dump(row_slate_data,\
-                \ sort_keys=False)\n    file.put(f\"{table_dir}/{table_name} template/{table_name}\
-                \ row.slate.yaml\", yaml_str)\n    print(\"row slate data generated\"\
-                )"
+                \ = {\n            \"spacing\": \"2\",\n            \"url\": f\"../{table_name}\
+                \ fields/{file_info['name']}\"\n        }\n        \n        y=y +\
+                \ 2\n        \n    row_slate_data = {\n        \"slate\": {\n    \
+                \        \"grid\": {\n                \"children\": children,\n  \
+                \              \"elements\": elements\n            }\n        }\n\
+                \    }\n    \n    yaml_str = yaml.dump(row_slate_data, sort_keys=False)\n\
+                \    file.put(f\"{table_dir}/{table_name} template/{table_name} row.slate.yaml\"\
+                , yaml_str)\n    print(\"row slate data generated\")"
             loop-iterable: ''
             type: code
         -   content: "# create a task to view table\nif (folder.get(f\"{table_dir}/{table_name}\
                 \ template/{table_name}.task.yaml\")['exists']):\n    print(f\"{table_name}.task.yaml\
                 \ have been generated before in {table_dir}/{table_name} template\"\
-                )\nelse:\n    task_data = {\n        \"task\": {\n            \"environment\"\
-                : \"native_shared.environment.yaml\",\n            \"fieldgrid\":\
-                \ {\n                \"children\": [],\n                \"elements\"\
+                )\nelse:\n    task_data = {\n        \"task\": {\n            \"fieldgrid\"\
+                : {\n                \"children\": [],\n                \"elements\"\
                 : {},\n                \"values\": {}\n            },\n          \
                 \  \"streams\": [\n                {\n                    \"main\"\
                 : [\n                        {\n                            \"chart\"\
