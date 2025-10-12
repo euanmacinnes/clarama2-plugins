@@ -1,4 +1,5 @@
 agent:
+  model-class: Python
   definition:
     - role: system
       content: "
