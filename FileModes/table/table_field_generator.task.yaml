@@ -1,5 +1,5 @@
 task:
-    environment: native_shared.environment.yaml
+    environment: default
     fieldgrid:
         children: []
         elements: {}

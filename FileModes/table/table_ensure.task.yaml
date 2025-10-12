@@ -1,13 +1,15 @@
 task:
+    environment: native.environment.yaml
     fieldgrid:
         children:
-        -   h: 2
+        -   h: 1
             id: element_0
-            w: 4
+            w: 3
             x: 0
             y: 0
         elements:
             element_0:
+                spacing: '4'
                 url: ././table_ensure.field.yaml
         values:
             table_ensure: Ensure
@@ -17,7 +19,8 @@ task:
                 Ensure\":\n    if 'original_url' in parameters:\n        print(f\"\
                 Ensuring table {parameters['original_url']}...\")\n        run = True\n\
                 \        \n        result = execute(f'ensure/{parameters['original_url']}')\n\
-                \        if result['data']=='ok':\n            print(result['results']['action'])\n\
-                \    else:\n        print(f\"Please run embedded\")\n\n"
+                \        if result['data']=='ok':\n            print(result['results'])\n\
+                \        else:\n            print(result)\n    else:\n        print(f\"\
+                Please run embedded\")"
             loop-iterable: ''
             type: code
