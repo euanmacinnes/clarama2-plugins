@@ -6,13 +6,22 @@ task:
         values: {}
     streams:
     -   main:
-        -   content: 'table_file = parameters.get(''original_url'',''/System/Data/Sources/Tables/jobs.table.yaml'')
+        -   content: 'import yaml
+
+                import os
+
+
+                table_file = parameters.get(''original_url'',''/System/Data/Sources/Tables/jobs.table.yaml'')
 
                 table_yaml = file.get(table_file)
 
                 table_source = table_yaml[''table''][''source'']
 
                 table_name = table_yaml[''table''][''name'']
+
+                table_title = os.path.basename(table_file)
+
+                table_columns = yaml.dump(table_yaml[''table''])
 
                 relative_source = path.relative(table_source, table_file)'
             loop-iterable: ''
@@ -99,6 +108,7 @@ task:
             loop-iterable: ''
             output: table
             table:
+                advanced: '[[table_columns]]'
                 checkbox: false
                 export: false
                 filter: false
