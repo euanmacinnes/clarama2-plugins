@@ -1,5 +1,5 @@
 task:
-    environment: native.environment.yaml
+    environment: default
     fieldgrid:
         children: []
         elements: {}
@@ -118,3 +118,5 @@ task:
                 source: res
                 tab_id: 0
             type: data
+
+
